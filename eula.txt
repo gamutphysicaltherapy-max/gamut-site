@@ -2,7 +2,7 @@ Terms of Use
 
 The agreement between you and Gamut, including how the subscription works.
 
-Last updated 30 September 2026
+Last updated 16 October 2026
 
 These Terms of Use ("Terms") are a legal agreement between you and the developer of the Gamut app ("Gamut", "we", "us") covering your use of the Gamut iOS application and this website (together, the "Service"). By downloading, accessing or using the Service you agree to them. If you do not agree, do not use the Service.
 
@@ -62,9 +62,13 @@ All purchases are processed by Apple, not by us. We never receive your payment d
 
 We may change subscription prices. Any change applies only to periods after the change and only after Apple has notified you and, where required, obtained your consent to continue.
 
+4.5 Team plans
+
+A coach, school, club or other organization may hold a team plan, arranged directly with us rather than through Apple. A team plan covers the Service for the players on that team's roster (up to the number of players the plan includes) and for up to three assistant coaches. Its price, billing period, renewal, cancellation and refunds are agreed between us and the plan's purchaser and are not handled by Apple; sections 4.1 to 4.4 do not apply to it. If you are a player, your access through a team lasts while you are on the roster and the team's plan is active: if the plan ends, the coach ends the team, or you are removed or leave, your access through the team ends, your training history stays yours, and you may continue with your own subscription. A team plan does not cancel, pause or refund a subscription you hold yourself through Apple; manage that in your Apple ID settings.
+
 5. What you may and may not do
 
-We grant you a personal, non-exclusive, non-transferable, revocable licence to use the Service for your own training. You may not:
+We grant you a personal, non-exclusive, non-transferable, revocable licence to use the Service for your own training and, if you are a coach on a team, to follow the training of the players on your team. You may not:
 
 - Copy, resell, sublicense, rent or redistribute the Service or any program it generates as a commercial product;
 
@@ -91,6 +95,8 @@ If you use these features:
 - We may review a report, and may remove content, restrict a feature, or suspend or terminate an account, at our discretion and without prior notice, including reclaiming a username that violates this section.
 
 - A friend you accept can see the training data described in our Privacy Policy's "Friends" section — never anything from Apple Health, and never a raw body-weight number. Once you claim a username, your username, display name, profile picture and ranked figures also appear on the global leaderboard, which every user can see (see the Privacy Policy's "Global leaderboard" section). We are not responsible for what a friend does with information you choose to share with them, or for another user's conduct.
+
+Teams. A player joins a team only with a code from its coach and only after agreeing to share their training with that team's coaches; what coaches can see is described in the Privacy Policy's "Teams" section and never includes anything from Apple Health. A player may turn sharing off or leave the team at any time. If you are a coach, you may use what your players share only to coach them; you may not copy it out of the Service for any other purpose, share it with anyone outside the team's coaching staff, or use it to pressure a player into sharing more than they chose to. Coaches are responsible for giving team codes only to their own players and for obtaining any consent their school, club or local law requires before players join. Gamut is for people aged 13 and over.
 
 7. Your content
 
