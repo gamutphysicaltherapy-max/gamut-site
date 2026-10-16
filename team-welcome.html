@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Gamut Team Plan</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<style>
+  .code {
+    font: 700 34px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 4px; margin: 10px 0 4px; color: var(--text);
+  }
+  .muted { color: var(--muted); font-size: 15px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mark">G</div>
+  <div class="mark-text">
+    <span class="wordmark">Gamut for Teams</span>
+    <span class="tagline">Automated strength programming for your whole roster</span>
+  </div>
+</header>
+
+<h1>You're all set.</h1>
+<p class="lede" id="status">Looking up your team plan…</p>
+
+<div class="callout" id="plan" hidden>
+  <p class="muted">Your claim code</p>
+  <p class="code" id="code"></p>
+  <p class="muted" id="plan-detail"></p>
+</div>
+
+<h2>Set up your team</h2>
+<ol>
+  <li>Download Gamut on your iPhone.</li>
+  <li>Choose <strong>With a team</strong>, then <strong>I'm a coach</strong>, and sign up with
+  <strong id="email-hint">the email you paid with</strong>. Your plan appears automatically. If you
+  sign up with a different email (or with Sign in with Apple's hidden email), enter the claim code
+  above instead.</li>
+  <li>Name your team, then share its team code with your players. Each player chooses
+  <strong>With a team</strong>, then <strong>I'm a player</strong>, and enters it.</li>
+</ol>
+<p class="muted">A receipt is on its way to your email. Keep this page's claim code until your team is
+set up. Questions? <a href="mailto:support@gamutapp.com">support@gamutapp.com</a></p>
+
+<footer class="pagefoot">
+  <span>© 2026 Gamut</span>
+  <a href="teams.html">Gamut for Teams</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="terms.html">Terms of Use</a>
+  <a href="support.html">Support</a>
+</footer>
+
+</div>
+<script>
+// Stripe Checkout returns here with ?session_id=cs_... The team-plan-claim
+// Edge Function confirms the session with Stripe, records the plan if the
+// webhook hasn't yet, and returns the claim code. Its origin allowlist
+// (TEAM_SITE_ORIGINS) must include this page's origin.
+(function () {
+  var CLAIM_URL = 'https://iuskxozkymrifvbpnazh.supabase.co/functions/v1/team-plan-claim';
+  var status = document.getElementById('status');
+  var sessionId = new URLSearchParams(window.location.search).get('session_id');
+
+  function format(code) {
+    return code.length === 8 ? code.slice(0, 4) + '-' + code.slice(4) : code;
+  }
+
+  if (!sessionId) {
+    status.textContent = 'Thanks for choosing Gamut. Follow the steps below to set up your team.';
+    return;
+  }
+
+  function load(attempt) {
+    fetch(CLAIM_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId: sessionId })
+    })
+      .then(function (response) {
+        return response.json().then(function (body) { return { ok: response.ok, status: response.status, body: body }; });
+      })
+      .then(function (result) {
+        if (!result.ok) {
+          if (result.status >= 500 && attempt < 3) {
+            setTimeout(function () { load(attempt + 1); }, 2000);
+            return;
+          }
+          status.textContent = (result.body && result.body.error) ||
+            "We couldn't find that purchase. Email support@gamutapp.com and we'll sort it out.";
+          return;
+        }
+        var plan = result.body;
+        status.textContent = plan.claimed
+          ? 'Your plan is already linked to a team in the app. Nothing more to do here.'
+          : 'Your plan for up to ' + plan.seatLimit + ' players is ready.';
+        document.getElementById('code').textContent = format(plan.claimCode);
+        document.getElementById('plan-detail').textContent = plan.claimed
+          ? 'Already claimed.'
+          : 'Paid with ' + plan.email + '.';
+        document.getElementById('email-hint').textContent = plan.email;
+        document.getElementById('plan').hidden = false;
+      })
+      .catch(function () {
+        if (attempt < 3) {
+          setTimeout(function () { load(attempt + 1); }, 2000);
+          return;
+        }
+        status.textContent = "We couldn't reach Gamut just now. Refresh this page in a moment.";
+      });
+  }
+  load(1);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut for Teams</title>
+<meta name="description" content="A periodized strength and conditioning program for every player on your roster, and a coach dashboard to follow their lifts, sessions and training load.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 22px 0; }
+  .plan {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 16px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .plan.featured { border-color: var(--accent-bright); box-shadow: 0 0 0 1px var(--accent-bright) inset; }
+  .plan-size { font-weight: 700; font-size: 18px; letter-spacing: -0.2px; }
+  .plan-price { font-size: 28px; font-weight: 700; letter-spacing: -0.6px; margin-top: 6px; }
+  .plan-price span { font-size: 14px; font-weight: 500; color: var(--muted); }
+  .plan-note { font-size: 14px; color: var(--muted); flex: 1; }
+  .plan a.buy {
+    margin-top: 12px; display: block; text-align: center; text-decoration: none;
+    background: var(--accent); color: var(--bg); font-weight: 650; border-radius: 10px; padding: 11px 12px;
+  }
+  .plan a.buy:hover { background: var(--accent-bright); color: var(--bg); }
+  .fine { font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mark">G</div>
+  <div class="mark-text">
+    <span class="wordmark">Gamut for Teams</span>
+    <span class="tagline">Automated strength programming for your whole roster</span>
+  </div>
+</header>
+
+<h1>Every player on a real program. You see how it's going.</h1>
+<p class="lede">Gamut builds each player their own periodized strength and conditioning program,
+fitted to your sport's season, and gives you a dashboard of their training.</p>
+
+<h2>What your team gets</h2>
+<ul>
+  <li><strong>A program for every player.</strong> Built around their sport, their season, their
+  equipment and their own logged lifts — adjusted session by session.</li>
+  <li><strong>A coach dashboard.</strong> Each player's lifts and estimated maxes, sessions completed
+  against plan, training load and effort, and who has fallen behind.</li>
+  <li><strong>Alerts that matter.</strong> A heads-up when a player's training load spikes or they
+  miss sessions.</li>
+  <li><strong>Up to three assistant coaches</strong>, who don't use a player spot.</li>
+  <li><strong>Privacy built in.</strong> Players agree to share their training when they join, and can
+  turn sharing off. Coaches never see Apple Health data, body weight or private notes.</li>
+</ul>
+
+<h2>Plans</h2>
+<p>One yearly plan per team, sized to your roster. Moving up a size mid-season is prorated.</p>
+
+<!--
+  Each "Choose" goes to a Stripe Payment Link (Stripe-hosted Checkout, Managed
+  Payments on, so Stripe calculates and remits sales tax). After paying, Stripe
+  redirects to team-welcome.html with the Checkout Session id.
+  THESE ARE SANDBOX (test_) LINKS. Going live: create the same four links on
+  the live account and replace the hrefs, and the billing-portal link below.
+-->
+<div class="plans">
+  <div class="plan">
+    <div class="plan-size">20 players</div>
+    <div class="plan-price">$700 <span>/ year</span></div>
+    <div class="plan-note">Plus up to 3 assistant coaches.</div>
+    <a class="buy" href="https://buy.stripe.com/test_fZu00c8HD7z2eQK0gpg7e00">Choose 20</a>
+  </div>
+  <div class="plan featured">
+    <div class="plan-size">30 players</div>
+    <div class="plan-price">$800 <span>/ year</span></div>
+    <div class="plan-note">Plus up to 3 assistant coaches.</div>
+    <a class="buy" href="https://buy.stripe.com/test_bJeeV65vrf1u382aV3g7e01">Choose 30</a>
+  </div>
+  <div class="plan">
+    <div class="plan-size">40 players</div>
+    <div class="plan-price">$900 <span>/ year</span></div>
+    <div class="plan-note">Plus up to 3 assistant coaches.</div>
+    <a class="buy" href="https://buy.stripe.com/test_cNi00caPLf1u4c68MVg7e02">Choose 40</a>
+  </div>
+  <div class="plan">
+    <div class="plan-size">50 players</div>
+    <div class="plan-price">$1,000 <span>/ year</span></div>
+    <div class="plan-note">Plus up to 3 assistant coaches.</div>
+    <a class="buy" href="https://buy.stripe.com/test_14A7sEf612eI7oi3sBg7e03">Choose 50</a>
+  </div>
+</div>
+<p class="fine">Prices are in US dollars. Applicable sales tax is calculated at checkout. Payment is
+processed by Stripe, and charges appear as LINK.COM* GAMUT TEAM. Tax-exempt schools can enter a tax
+ID at checkout.</p>
+
+<div class="callout">
+  <p><strong>Paying by purchase order or invoice?</strong> Email
+  <a href="mailto:support@gamutapp.com?subject=Gamut%20team%20plan%20quote">support@gamutapp.com</a>
+  with your school, roster size and billing contact. We'll send a quote, and you can pay the invoice by
+  card or bank transfer on net terms.</p>
+</div>
+
+<h2>After you buy</h2>
+<ol>
+  <li>Download Gamut on your iPhone.</li>
+  <li>Choose <strong>With a team</strong>, then <strong>I'm a coach</strong>, and sign up with the same
+  email you used to pay. Your plan appears automatically (or enter the claim code from your
+  confirmation page).</li>
+  <li>Name your team and share its team code with your players.</li>
+</ol>
+
+<h2>Manage your plan</h2>
+<p>Change your plan size, update your card, download invoices or cancel at
+<a href="https://billing.stripe.com/p/login/test_fZu00c8HD7z2eQK0gpg7e00">the billing portal</a>
+(sign in with the email you paid with).</p>
+
+<footer class="pagefoot">
+  <span>© 2026 Gamut</span>
+  <a href="index.html">Home</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="terms.html">Terms of Use</a>
+  <a href="support.html">Support</a>
+</footer>
+
+</div>
+</body>
+</html>
