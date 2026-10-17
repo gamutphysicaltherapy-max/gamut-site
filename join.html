@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join your team — Gamut</title>
+<meta name="description" content="Your coach invited you to train with your team on Gamut.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<style>
+  .code { font-size: 2rem; font-weight: 700; letter-spacing: 0.12em; margin: 0.4rem 0 1rem; }
+  .actions { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.25rem 0; max-width: 22rem; }
+  .actions a { display: block; text-align: center; padding: 0.85rem 1rem; border-radius: 999px;
+    font-weight: 600; text-decoration: none; }
+  .primary { background: #3f4b33; color: #f8fbf8; }
+  .secondary { border: 1px solid #3f4b33; color: #3f4b33; }
+  ol li { margin-bottom: 0.4rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mark">G</div>
+  <div class="mark-text">
+    <span class="wordmark">Gamut</span>
+    <span class="tagline">Automated strength programming</span>
+  </div>
+</header>
+
+<!-- Opened from a coach's invite link or QR code (Gamut's team settings).
+     It names the code, tries to open the app with it filled in, and points
+     to the App Store otherwise. Deliberately links nowhere else on this site:
+     the app shares this URL, and nothing it shares may lead to purchasing. -->
+<h1>Join your team on Gamut</h1>
+<p class="lede">Your coach invited you to train with your team.</p>
+
+<div class="callout">
+  <p>Your team code</p>
+  <p class="code" id="code">—</p>
+</div>
+
+<div class="actions">
+  <a class="primary" id="open" href="gamut://join">Open in Gamut</a>
+  <a class="secondary" href="https://apps.apple.com/app/id6804510741">Get Gamut on the App Store</a>
+</div>
+
+<h2>New to Gamut?</h2>
+<ol>
+  <li>Install Gamut from the App Store and open it.</li>
+  <li>Create your account, then choose <strong>With a team</strong> and <strong>I'm a player</strong>.</li>
+  <li>Enter the team code above. Before you join, Gamut shows exactly what your coaches will see.</li>
+</ol>
+<p>Already using Gamut? Tap <strong>Open in Gamut</strong>, or go to Settings → Team → Join a Team and
+enter the code.</p>
+
+<footer class="pagefoot">
+  <span>© 2026 Gamut</span>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="terms.html">Terms of Use</a>
+  <a href="support.html">Support</a>
+</footer>
+
+</div>
+<script>
+  (function () {
+    var raw = new URLSearchParams(window.location.search).get('code') || '';
+    var code = raw.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 8);
+    if (code.length === 8) {
+      document.getElementById('code').textContent = code.slice(0, 4) + '-' + code.slice(4);
+      document.getElementById('open').href = 'gamut://join?code=' + code;
+    }
+  })();
+</script>
+</body>
+</html>
