@@ -21,8 +21,15 @@
   player, time to first win, objections, and the season as the (real) urgency.
 
   Every claim here must be true of the shipped app. No testimonials, user
-  counts, guarantees, "most popular" labels or injury claims (see offer.md's
-  claim bank). The app itself must never link here (guideline 3.1.1).
+  counts, "most popular" labels or injury claims (see offer.md's claim bank).
+  The app itself must never link here (guideline 3.1.1).
+
+  The 6-month money-back guarantee (since 17 October 2026, the owner's
+  offer) is unconditional: a full refund of everything paid, on request
+  within 6 months of a team's first payment. Terms 4.5 leaves team-plan
+  refunds to the terms agreed at purchase, which is this page. Honoring one
+  is a refund AND an immediate cancellation in Stripe, because a refund alone
+  does not end a plan (see studio/app-store/SUBMISSION.md).
 
   Plan buttons are LIVE Stripe Payment Links (live account since 17 October
   2026; Managed Payments on, so Stripe calculates and remits sales tax). After
@@ -274,6 +281,27 @@
   }
   .po b { font-family: var(--display); font-weight: 600; font-size: 16px; display: block; margin-bottom: 4px; }
 
+  /* Guarantee */
+  .guarantee {
+    display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center; margin-top: 28px;
+    border-radius: var(--radius-lg); padding: 28px 30px; color: var(--on-hero);
+    background: radial-gradient(520px 260px at 0% 0%, rgba(181, 193, 170, 0.22), transparent 70%), var(--hero);
+    box-shadow: 0 30px 60px -36px rgba(var(--shadow), 0.7);
+  }
+  .seal {
+    width: 120px; height: 120px; border-radius: 50%; display: grid; place-items: center; text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.55); box-shadow: inset 0 0 0 6px var(--hero), inset 0 0 0 7px rgba(255, 255, 255, 0.3);
+    font-family: var(--display); line-height: 1;
+  }
+  .seal b { display: block; font-size: 40px; font-weight: 700; letter-spacing: -0.03em; }
+  .seal span { display: block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; line-height: 1.25; color: var(--on-hero-muted); }
+  .guarantee h3 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; margin: 0 0 10px; font-weight: 700; color: var(--on-hero); }
+  .guarantee p { margin: 0; color: var(--on-hero-muted); font-size: 17px; max-width: 46em; }
+  .guarantee p + p { margin-top: 8px; font-size: 14px; }
+  .guarantee a { color: var(--on-hero); }
+  .assure { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 15px; color: var(--on-hero); font-family: var(--display); font-weight: 500; }
+  .assure::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--on-hero); -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 1.5l6.5 2.6v5.1c0 4-2.8 7.4-6.5 8.8-3.7-1.4-6.5-4.8-6.5-8.8V4.1z M6.6 10.2l2.4 2.4 4.4-4.8' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/></svg>") center / contain no-repeat; mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 1.5l6.5 2.6v5.1c0 4-2.8 7.4-6.5 8.8-3.7-1.4-6.5-4.8-6.5-8.8V4.1z M6.6 10.2l2.4 2.4 4.4-4.8' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/></svg>") center / contain no-repeat; }
+
   /* Steps */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; counter-reset: s; }
   .steps li { list-style: none; padding: 0 28px 0 0; position: relative; }
@@ -337,6 +365,8 @@
     .plans { grid-template-columns: 1fr 1fr; }
     .anchor { position: static; }
     .pains, .qa { grid-template-columns: 1fr; }
+    .guarantee { grid-template-columns: 1fr; gap: 18px; padding: 26px 22px; }
+    .seal { width: 104px; height: 104px; } .seal b { font-size: 34px; }
   }
   @media (max-width: 640px) {
     body { font-size: 16px; }
@@ -391,6 +421,7 @@
         <a class="text-link" href="#how">See how it works</a>
       </div>
       <p class="price-hint num">From <strong>$2.42 per player a month</strong>, billed yearly. Assistant coaches are free.</p>
+      <a class="assure" href="#guarantee">6-month money-back guarantee</a>
       <div class="credential">
         <span class="creds"><span>DPT</span><span>CSCS</span></span>
         <span>Built by a <b>Doctor of Physical Therapy</b> who is also a <b>Certified Strength and Conditioning Specialist</b>.</span>
@@ -509,7 +540,7 @@
       <div class="anchor-row num"><span>50 athletes, each paying on their own</span><b>$12,499.50</b></div>
       <div class="anchor-total num">
         <div class="big">$1,700</div>
-        <p>for a 50-player team plan, for the year. That's <b style="color:var(--on-hero)">$2.83 per player a month</b>.</p>
+        <p>for a 50-player team plan, for the year. That's <b style="color:var(--on-hero)">$2.83 per player a month</b>, backed by a 6-month money-back guarantee.</p>
         <a class="btn btn-light" href="#plans">Choose your roster size <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </aside>
@@ -558,6 +589,14 @@
         <a class="btn" href="https://buy.stripe.com/28E4gBakGbGicn88hxao803">Choose 100 players</a>
       </div>
     </div>
+    <div class="guarantee reveal" id="guarantee">
+      <div class="seal" aria-hidden="true"><div><b>6</b><span>Month<br>guarantee</span></div></div>
+      <div>
+        <h3>Stronger and faster in six months, or your money back.</h3>
+        <p>If your players aren't getting stronger and faster, or you're not happy with Gamut for any reason, email us within 6 months of your first payment and we'll refund every dollar you've paid. No questions asked.</p>
+        <p>Email <a href="mailto:support@gamutapp.com?subject=Gamut%20team%20plan%20refund">support@gamutapp.com</a> from the address you paid with. The refund goes back to your original payment method, and your team plan ends when it's made.</p>
+      </div>
+    </div>
     <div class="plan-notes">
       <div>
         <p class="fine">Prices are in US dollars, billed once a year. Per-month figures are the yearly price divided by 12 and by the roster size. Applicable sales tax is calculated at checkout, and tax-exempt schools can enter a tax ID there.</p>
@@ -597,6 +636,7 @@
       <div class="reveal"><h3>What can I see about my players?</h3><p>Their lifts and estimated maxes, sessions done against their plan, training load, effort ratings and PRs. Never their Apple Health data, body weight or private notes. Players agree to share when they join and can turn sharing off, and you'll see that it's off.</p></div>
       <div class="reveal"><h3>How old do players need to be?</h3><p>13 or older.</p></div>
       <div class="reveal"><h3>What if a player leaves the team?</h3><p>Remove them from your roster and their spot opens up for someone else.</p></div>
+      <div class="reveal"><h3>What if it doesn't work for us?</h3><p>You're covered by our 6-month money-back guarantee. If your players aren't getting stronger and faster, or you're not happy for any reason, email us within 6 months of your first payment for a full refund. No questions asked.</p></div>
       <div class="reveal"><h3>Can I change sizes or cancel?</h3><p>Move up a size any time and pay only the difference for the rest of the year. A smaller size starts at renewal. Cancel any time in the billing portal, and your plan runs to the end of the year you paid for.</p></div>
     </div>
   </div>
@@ -610,7 +650,7 @@
     </div>
     <div class="cta-col reveal">
       <a class="btn btn-light" href="#plans">See team plans <span class="arrow" aria-hidden="true">→</span></a>
-      <p class="fine num">From $2.42 per player a month.</p>
+      <p class="fine num">From $2.42 per player a month. 6-month money-back guarantee.</p>
     </div>
   </div>
 </section>
