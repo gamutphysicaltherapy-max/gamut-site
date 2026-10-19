@@ -198,6 +198,7 @@
   }
   .tag-float i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
   .tag-1 { right: 8px; top: 150px; }
+  .offer-peek { display: none; }
   .tag-2 { right: 236px; top: 418px; }
 
   /* Sections */
@@ -333,6 +334,18 @@
   @media (max-width: 980px) {
     .offer-grid { grid-template-columns: 1fr; }
     .offer-visual { display: none; }
+    .offer-peek {
+      display: block; position: relative; height: 330px; margin: 4px 0 18px; overflow: hidden;
+      -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
+      mask-image: linear-gradient(180deg, #000 72%, transparent);
+    }
+    .offer-peek .phone { position: absolute; width: 210px; padding: 6px; border-radius: 32px; }
+    .offer-peek .phone img { border-radius: 27px; }
+    .offer-peek .front { left: calc(50% - 50px); top: 10px; z-index: 2; }
+    .offer-peek .back { left: calc(50% - 180px); top: 54px; width: 176px; transform: rotate(-6deg); opacity: 0.94; }
+    .offer-peek .tag-float { font-size: 13px; padding: 7px 11px; border-radius: 10px; white-space: nowrap; }
+    .peek-1 { right: max(8px, calc(50% - 190px)); top: 132px; }
+    .peek-2 { left: calc(50% - 168px); top: 236px; }
     .plans { grid-template-columns: 1fr 1fr; }
     .plan-notes, .final-grid { grid-template-columns: 1fr; }
     .pains { grid-template-columns: 1fr; gap: 0; }
@@ -351,7 +364,8 @@
     .offer-copy { padding-bottom: 32px; }
     .eyebrow { font-size: 11.5px; margin-bottom: 10px; }
     .offer h1 { font-size: 36px; margin-bottom: 10px; }
-    .promise { font-size: 17px; margin-bottom: 14px; }
+    /* The bullets say the same thing; on a phone the screenshots do the rest. */
+    .promise { display: none; }
     .gets { gap: 7px; margin-bottom: 16px; }
     .gets li { font-size: 16px; grid-template-columns: 22px 1fr; }
     .gets li::before { width: 20px; height: 20px; background-size: 16px; }
@@ -423,6 +437,16 @@
     <div class="offer-copy">
       <p class="eyebrow">For high school and college coaches</p>
       <h1 id="offer-title">The Stronger &amp; Faster <em>Team Program</em></h1>
+      <!-- Below 980px the two-phone visual beside the copy is hidden, so a
+           coach on a phone met a wall of words with no sign of the product.
+           This shows it right under the name: the coach dashboard in front,
+           a player's workout behind, cropped and faded into the hero. -->
+      <div class="offer-peek" aria-hidden="true">
+        <div class="phone back"><img src="img/player-workout.webp" alt="" width="660" height="1434"></div>
+        <div class="phone front"><img src="img/coach-dashboard.webp" alt="" width="660" height="1434"></div>
+        <div class="tag-float peek-1"><i style="background:#a8402f"></i>Overloaded · 2</div>
+        <div class="tag-float peek-2"><i style="background:#556647"></i>On track · 7</div>
+      </div>
       <p class="promise">Every player gets their own plan to get strong and fast. You see how each one is doing.</p>
       <ul class="gets">
         <li>A new workout for each player, every day</li>
@@ -467,7 +491,7 @@
         <a class="btn" href="https://buy.stripe.com/9B6dRbeAW7q2cn8eFVao800">Pick 25</a>
       </div>
       <div class="plan featured reveal">
-        <span class="flag">Our pick</span>
+        <span class="flag">Fits most teams</span>
         <div class="size">50 players</div>
         <div class="fit">Varsity and JV</div>
         <div class="price num">$1,700<small> /year</small></div>
