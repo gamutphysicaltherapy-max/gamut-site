@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="docs.css">
 <!--
   The site's front page, for athletes. Kept short on purpose: the offer, why
@@ -49,6 +50,17 @@
   .visual .front { width: 262px; right: 70px; top: 0; z-index: 2; }
   .visual .back { width: 226px; right: 268px; top: 92px; transform: rotate(-5deg); opacity: 0.94; }
   .visual .phone, .visual .phone img { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+  .tag-float {
+    position: absolute; z-index: 3; font-family: var(--display); font-weight: 600; font-size: 14px; white-space: nowrap;
+    background: var(--surface); color: var(--text); padding: 9px 13px; border-radius: 12px;
+    box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.5); display: flex; align-items: center; gap: 8px;
+  }
+  .tag-float i { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; }
+  .tag-1 { right: 18px; top: 150px; }
+  .tag-2 { right: 230px; top: 400px; }
+  .js .visual { animation: rise 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 180ms both; }
+  @media (prefers-reduced-motion: reduce) { .js .visual { animation: none; } }
+  .peek { display: none; }
 
   section.band { padding: 84px 0; }
   .kicker { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
@@ -84,6 +96,20 @@
   @media (max-width: 980px) {
     .home-hero .container { grid-template-columns: 1fr; }
     .visual { display: none; }
+    /* Full-bleed, so the tilted phone's corner is cut by the screen edge,
+       never by an invisible box (teams.html's offer-peek, same numbers). */
+    .peek {
+      display: block; position: relative; height: 330px; margin: 6px 0 18px calc(50% - 50vw); width: 100vw; overflow: hidden;
+      -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
+      mask-image: linear-gradient(180deg, #000 72%, transparent);
+    }
+    .peek .phone { position: absolute; width: 210px; padding: 6px; border-radius: 32px; }
+    .peek .phone img { border-radius: 27px; }
+    .peek .front { left: calc(50% - 50px); top: 14px; z-index: 2; }
+    .peek .back { left: max(26px, calc(50% - 172px)); top: 58px; width: 176px; transform: rotate(-6deg); opacity: 0.94; }
+    .peek .tag-float { font-size: 13px; padding: 7px 11px; border-radius: 10px; }
+    .peek-1 { right: max(8px, calc(50% - 190px)); top: 128px; }
+    .peek-2 { left: max(14px, calc(50% - 168px)); top: 238px; }
     .home-hero .copy { padding-bottom: 52px; }
     .pains { grid-template-columns: 1fr; }
     .pains li { padding: 16px 0; font-size: 20px; }
@@ -127,9 +153,18 @@
 
 <section class="hero home-hero" aria-labelledby="title">
   <div class="container">
-    <div class="copy">
+    <div class="copy stagger">
       <p class="eyebrow">Strength and speed training for athletes</p>
       <h1 id="title">A new workout, built for you, <em>every day.</em></h1>
+      <!-- Below 980px the two phones beside the copy are hidden, so a phone
+           visitor met nothing but words. This shows the app right under the
+           headline: Home in front, a workout behind, faded into the hero. -->
+      <div class="peek" aria-hidden="true">
+        <div class="phone back float slow"><img src="img/athlete-workout.webp" alt="" width="660" height="1434"></div>
+        <div class="phone front float"><img src="img/athlete-home.webp" alt="" width="660" height="1434"></div>
+        <div class="tag-float peek-1"><i></i>Week 5 of 8</div>
+        <div class="tag-float peek-2"><i></i>Back Squat · 5 × 3</div>
+      </div>
       <p class="lede">Gamut writes your training around your sport, your season and how you recovered
       last night. Log your sets, and tomorrow adjusts.</p>
       <div class="ctas">
@@ -140,50 +175,52 @@
       <p class="cred"><span class="creds"><span>DPT</span><span>CSCS</span></span><span>Made by a Doctor of Physical Therapy who is also a strength coach.</span></p>
     </div>
     <div class="visual" aria-hidden="true">
-      <div class="phone back"><img src="img/athlete-workout.webp" alt="" width="660" height="1434"></div>
-      <div class="phone front"><img src="img/athlete-home.webp" alt="" width="660" height="1434" fetchpriority="high"></div>
+      <div class="phone back float slow"><img src="img/athlete-workout.webp" alt="" width="660" height="1434"></div>
+      <div class="phone front float"><img src="img/athlete-home.webp" alt="" width="660" height="1434" fetchpriority="high"></div>
+      <div class="tag-float tag-1"><i></i>Week 5 of 8</div>
+      <div class="tag-float tag-2"><i></i>Back Squat · 5 × 3</div>
     </div>
   </div>
 </section>
 
 <section class="band" aria-labelledby="why-title">
   <div class="container">
-    <p class="kicker">Why it matters</p>
-    <h2 id="why-title">A template doesn't know you.</h2>
+    <p class="kicker reveal">Why it matters</p>
+    <h2 id="why-title" class="reveal">A template doesn't know you.</h2>
     <ul class="pains">
-      <li><span>01</span>The same plan for everyone, when no two athletes lift the same.</li>
-      <li><span>02</span>Your season changes. Most programs don't.</li>
-      <li><span>03</span>Some days you're fresh. Some days you're not. Paper can't tell.</li>
+      <li class="reveal" style="--i:0"><span>01</span>The same plan for everyone, when no two athletes lift the same.</li>
+      <li class="reveal" style="--i:1"><span>02</span>Your season changes. Most programs don't.</li>
+      <li class="reveal" style="--i:2"><span>03</span>Some days you're fresh. Some days you're not. Paper can't tell.</li>
     </ul>
-    <p class="turn">Gamut can. Every workout is built for you, for that day.</p>
+    <p class="turn reveal">Gamut can. Every workout is built for you, for that day.</p>
   </div>
 </section>
 
 <section class="band how" aria-labelledby="how-title">
   <div class="container">
-    <p class="kicker">How it works</p>
-    <h2 id="how-title">Three things a template can't do.</h2>
+    <p class="kicker reveal">How it works</p>
+    <h2 id="how-title" class="reveal">Three things a template can't do.</h2>
     <div class="features">
-      <article class="feature">
+      <article class="feature reveal" style="--i:0">
         <div class="shot"><div class="phone"><img src="img/athlete-workout.webp" alt="A Back Squat in Gamut: three warm-up sets, then five sets of three at 325 pounds." width="660" height="1434" loading="lazy"></div></div>
         <div class="body"><h3>Your numbers, every set.</h3><p>Weights come from the sets you log, with a warm-up built in. Rate how hard it felt, and the next day adjusts.</p></div>
       </article>
-      <article class="feature">
+      <article class="feature reveal" style="--i:1">
         <div class="shot"><div class="phone"><img src="img/season-plan.webp" alt="A season plan in Gamut: blocks of training laid over a sport's season." width="660" height="1434" loading="lazy"></div></div>
         <div class="body"><h3>Your season, planned.</h3><p>Build in the off-season. Peak before games start. Hold your strength in season, with lighter weeks to rest.</p></div>
       </article>
-      <article class="feature">
+      <article class="feature reveal" style="--i:2">
         <div class="shot"><div class="phone"><img src="img/athlete-recovery.webp" alt="Gamut's Recovery page: strain, recovery and sleep rings with coaching." width="660" height="1434" loading="lazy"></div></div>
         <div class="body"><h3>Your recovery, read.</h3><p>Connect Apple Health, and the day gets lighter when your sleep and heart rate say you need it.</p></div>
       </article>
     </div>
-    <p class="privacy-note">No ads. No trackers. Apple Health data stays on your phone. <a href="privacy.html">Read our privacy policy</a>.</p>
+    <p class="privacy-note reveal">No ads. No trackers. Apple Health data stays on your phone. <a href="privacy.html">Read our privacy policy</a>.</p>
   </div>
 </section>
 
 <section class="coach" aria-labelledby="coach-title">
   <div class="container">
-    <div class="coach-box">
+    <div class="coach-box reveal">
       <div>
         <p class="kicker">For coaches</p>
         <h2 id="coach-title">Coaching a team?</h2>
@@ -207,5 +244,6 @@
   </div></div>
 </footer>
 
+<script src="docs.js"></script>
 </body>
 </html>

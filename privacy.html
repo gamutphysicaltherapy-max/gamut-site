@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="docs.css">
 <!--
   Every statement here must stay true of the shipped app. The Teams sections
@@ -37,7 +38,7 @@
 <main id="main">
 
 <section class="hero">
-  <div class="container">
+  <div class="container stagger">
     <p class="eyebrow">Privacy Policy</p>
     <h1>Your training is yours. <em>Here's where it goes.</em></h1>
     <p class="lede">What Gamut collects, who can see it, and what never leaves your phone.
@@ -51,10 +52,10 @@
 
 <div class="container glance">
   <div class="tiles">
-    <div class="tile"><b>No ads, no tracking</b><span>No advertising, no analytics SDK, no trackers. Nothing is sold.</span></div>
-    <div class="tile"><b>Apple Health stays on your phone</b><span>Readings are never uploaded or shown to anyone, with one body-weight exception.</span></div>
-    <div class="tile"><b>You choose who sees what</b><span>Friends, teammates and coaches see only what is listed here, and you can turn it off.</span></div>
-    <div class="tile"><b>Delete it all in one tap</b><span>Delete My Account removes your account and every record, with no grace period.</span></div>
+    <div class="tile reveal" style="--i:0"><b>No ads, no tracking</b><span>No advertising, no analytics SDK, no trackers. Nothing is sold.</span></div>
+    <div class="tile reveal" style="--i:1"><b>Apple Health stays on your phone</b><span>Readings are never uploaded or shown to anyone, with one body-weight exception.</span></div>
+    <div class="tile reveal" style="--i:2"><b>You choose who sees what</b><span>Friends, teammates and coaches see only what is listed here, and you can turn it off.</span></div>
+    <div class="tile reveal" style="--i:3"><b>Delete it all in one tap</b><span>Delete My Account removes your account and every record, with no grace period.</span></div>
   </div>
 </div>
 
