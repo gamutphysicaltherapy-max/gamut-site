@@ -4,53 +4,116 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Gamut</title>
-<meta name="description" content="How Gamut handles your training data, your account and your Apple Health data.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="How Gamut handles your training data, your account, your team's view of your training and your Apple Health data.">
+<meta name="theme-color" content="#3d4b35">
+<link rel="icon" type="image/png" href="img/emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css">
+<!--
+  Every statement here must stay true of the shipped app. The Teams sections
+  mirror src/lib/teamSharingCopy.ts (what a player agrees to share) and
+  list_teammates(); change one, change the other. The App Store privacy
+  labels (studio/app-store/SUBMISSION.md) must agree with this page too.
+  The app opens this page, so it must never link to teams.html (3.1.1).
+-->
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="mark">G</div>
-  <div class="mark-text">
-    <span class="wordmark">Gamut</span>
-    <span class="tagline">Automated strength programming</span>
+<header class="topbar">
+  <div class="container">
+    <span class="brand"><span class="emblem" aria-hidden="true"></span><span class="brand-name">Gamut</span></span>
+    <nav class="topnav" aria-label="Documents">
+      <a href="support.html">Support</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
   </div>
 </header>
 
-<h1>Privacy Policy</h1>
-<p class="lede">What Gamut collects, where it goes, and what never leaves your phone.</p>
-<p class="updated">Last updated 17 October 2026</p>
+<main id="main">
 
-<p>Gamut is a training app that builds a new workout for you each day and adjusts it as you log
-your sets. This policy describes what data that requires, who processes it, and how to get rid of
-it. It covers the Gamut iOS app, its Apple Watch app and widgets, and this website.</p>
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Privacy Policy</p>
+    <h1>Your training is yours. <em>Here's where it goes.</em></h1>
+    <p class="lede">What Gamut collects, who can see it, and what never leaves your phone.
+    It covers the Gamut iPhone app, its Apple Watch app and widgets, and this website.</p>
+    <ul class="meta">
+      <li>Last updated 19 October 2026</li>
+      <li>No ads. No trackers.</li>
+    </ul>
+  </div>
+</section>
 
-<div class="callout">
-  <p><strong>The short version.</strong> Gamut stores your account and your training history so it
-  survives a new phone. Apple Health data is read on your device and stays there — it is never
-  shared with other users and never sold — with one exception you should know about: if a
-  body-weight reading from Apple Health is the only weigh-in for today, it is added to your Gamut
-  weight log, which is saved to your account like a weigh-in you type yourself. If you join a team,
-  your coaches see a summary of your Gamut training (never anything from Apple Health, never your
-  body weight), and you can turn that sharing off at any time. Nothing you do in Gamut is sold or
-  used for advertising, and there is no analytics or tracking SDK in the app.</p>
+<div class="container glance">
+  <div class="tiles">
+    <div class="tile"><b>No ads, no tracking</b><span>No advertising, no analytics SDK, no trackers. Nothing is sold.</span></div>
+    <div class="tile"><b>Apple Health stays on your phone</b><span>Readings are never uploaded or shown to anyone, with one body-weight exception.</span></div>
+    <div class="tile"><b>You choose who sees what</b><span>Friends, teammates and coaches see only what is listed here, and you can turn it off.</span></div>
+    <div class="tile"><b>Delete it all in one tap</b><span>Delete My Account removes your account and every record, with no grace period.</span></div>
+  </div>
 </div>
 
-<h2>Who is responsible</h2>
+<div class="container doc">
+  <nav class="toc-wrap" aria-label="On this page">
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <ol>
+        <li><a href="#short">The short version</a></li>
+        <li><a href="#who">Who is responsible</a></li>
+        <li><a href="#collect">What we collect</a></li>
+        <li><a href="#health">Apple Health</a></li>
+        <li><a href="#friends">Friends and the leaderboard</a></li>
+        <li><a href="#teams">Teams</a></li>
+        <li><a href="#payments">Subscriptions and team plans</a></li>
+        <li><a href="#not-collected">What we don't collect</a></li>
+        <li><a href="#use">How your data is used</a></li>
+        <li><a href="#processors">Who processes it</a></li>
+        <li><a href="#website">This website</a></li>
+        <li><a href="#device">On your device</a></li>
+        <li><a href="#retention">How long we keep it</a></li>
+        <li><a href="#rights">Your choices and rights</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#transfers">International transfers</a></li>
+        <li><a href="#changes">Changes and contact</a></li>
+      </ol>
+    </details>
+  </nav>
+
+  <article class="prose">
+
+<h2 id="short">The short version</h2>
+<div class="callout key">
+  <p>Gamut stores your account and your training history so it survives a new phone. <strong>Apple
+  Health data is read on your device and stays there.</strong> It is never shared with other users
+  and never sold, with one exception you should know about: if a body-weight reading from Apple
+  Health is the only weigh-in for today, it is added to your Gamut weight log, which is saved to
+  your account like a weigh-in you type yourself.</p>
+  <p>If you join a team, your coaches see a summary of your Gamut training (never anything from
+  Apple Health, never your body weight), and you can turn that sharing off at any time. Nothing you
+  do in Gamut is sold or used for advertising, and there is no analytics or tracking SDK in the
+  app.</p>
+</div>
+
+<h2 id="who">Who is responsible</h2>
 <p>Gamut is operated by the developer of the Gamut app ("we", "us"). For any question about this
 policy, or to make a privacy request, contact
 <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>.</p>
 
-<h2>What we collect</h2>
+<h2 id="collect">What we collect</h2>
 
 <h3>Account information</h3>
 <p>An email address, and either a password or a sign-in through Apple or Google, so your training
 survives reinstalling the app or switching phones. Passwords are handled entirely by our
-authentication provider and are stored only as a salted hash — we never see, store or have any way
+authentication provider and are stored only as a salted hash. We never see, store or have any way
 to recover your password. If you sign in with Apple or Google, that provider tells us your email
 address (with Apple, this can be a private relay address if you choose "Hide My Email") and may
-share your name; we never receive your Apple or Google password.</p>
+share your name; we never receive your Apple or Google password. We email you only about your
+account: to confirm your address and to reset your password.</p>
 
 <h3>Your training profile</h3>
 <p>The answers you give during setup and in the app: your name, age, height, body weight,
@@ -64,78 +127,88 @@ write. Because this can describe an injury, keep the note to what matters for tr
 out anything you would not want stored.</p>
 
 <h3>Your training records</h3>
-<p>Every set you log — the exercise, weight, reps and your effort rating — plus which workouts you
-completed or skipped, your streak, your weigh-ins, your goal measurements, and your generated
-workout history. This is the app's core function; without it there is no progression, no
-estimated maxes and no streak.</p>
-
-<h3>Apple Health data</h3>
-<p>If you choose to connect Apple Health, Gamut reads heart rate, heart rate variability, resting
-heart rate, heart rate recovery, respiratory rate, blood oxygen, sleeping wrist temperature, sleep,
-active energy, exercise minutes, body weight, VO<sub>2</sub> max and recorded workouts. If you use
-the Gamut Apple Watch app, it saves your strength-training workouts (with heart rate and active
-energy) to Apple Health. All of this is optional, the app works fully without it, and you can turn
-it off at any time in the iOS Health app.</p>
-
-<div class="callout">
-  <p><strong>Apple Health readings stay on your device.</strong> They are stored in Gamut's local
-  cache on your phone. They are not uploaded to our servers, not shown to friends, coaches or other users,
-  not shared with any third party, not used for advertising or marketing, and not sold — ever, to
-  anyone, for any purpose.</p>
-  <p><strong>The one exception is body weight.</strong> If Apple Health has a body-weight reading
-  from today and you have not logged a weigh-in yourself today, Gamut adds it to your weight log and
-  profile, which are saved to your account and used exactly like a weigh-in you type — to chart
-  progress toward a weight goal. Friends and coaches never see a body-weight number. You can avoid this by not
-  granting Gamut read access to Body Weight in the Health app.</p>
-  <p>Health readings do influence your training on-device: your recovery score and the load
-  adjustment for a session are calculated on your phone from those readings. When a workout is
-  generated, only the <em>resulting</em> training numbers are sent — an intensity percentage and
-  your estimated training maxes — never a heart rate, a sleep duration or any other health
-  measurement.</p>
-</div>
+<p>Every set you log (the exercise, weight, reps and your effort rating), plus which workouts you
+completed or skipped, how hard each session felt, your streak, your weigh-ins, your goal
+measurements, and your generated workout history. This is the app's core function; without it
+there is no progression, no estimated maxes and no streak.</p>
 
 <h3>Profile picture (optional)</h3>
 <p>If you add a profile picture, Gamut opens your photo library so you can pick one photo; only
 the photo you pick is used, and it is cropped and resized on your phone before upload. It is stored
 at a web address that is not listed anywhere but <strong>can be viewed by anyone who has the
-link</strong>, and it is shown to your friends and beside your name on leaderboards. Replacing or
-removing it, or deleting your account, removes it.</p>
+link</strong>, and it is shown to your friends and teammates and beside your name on leaderboards.
+Replacing or removing it, or deleting your account, removes it.</p>
 
 <h3>Contacts (optional, to find friends)</h3>
 <p>If you choose to use "Find Friends from Your Contacts" on the Social tab, Gamut reads the email
 addresses in your device's contacts <strong>on your device</strong> and converts each one to a
 one-way cryptographic hash before anything leaves your phone. Only those hashes are sent to our
-servers, which check them against hashes of the email addresses already registered to Gamut
-accounts and return matching accounts — never a raw email address, in either direction, and never
-a contact's name, phone number or any other contact detail. This feature is entirely optional and
-only runs when you tap it.</p>
+servers, which check them against the hashes of people who have chosen to be findable and return
+matching accounts. Never a raw email address, in either direction, and never a contact's name,
+phone number or any other contact detail. This feature only runs when you tap it, and the number
+of searches is limited.</p>
 
 <div class="callout">
-  <p><strong>Your contact list itself never reaches our servers.</strong> Once you claim a username,
-  and only if your email address has been verified, we store a hash of your own account's email
-  address so other Gamut users who already have your email in their contacts can find you. This is
-  on by default and can be turned off with "Findable by Email" in Settings, which removes you from
-  those searches. We cannot reverse a hash back into an email address, and we do not use this
-  feature's data for advertising, marketing or any purpose other than showing people which of their
-  contacts already use Gamut.</p>
+  <p><strong>Being findable is off until you turn it on.</strong> Your contact list itself never
+  reaches our servers. If you turn on "Findable by Email" in Settings, and only if your email
+  address has been verified, we store a hash of your own account's email address so people who
+  already have your email in their contacts can find you. Turning it off removes the hash. We cannot
+  reverse a hash back into an email address, and we use it for nothing except showing people which
+  of their contacts already use Gamut.</p>
 </div>
+
+<h3>Home Screen widgets</h3>
+<p>Gamut's widgets show a summary that the app keeps on your phone. So they stay current while the
+app is closed, a phone with a Gamut widget on it registers a push token with us (without asking
+for notification permission, which a silent update does not need) and we send it a silent,
+content-free signal about once an hour that wakes Gamut to refresh the widget on the phone. We
+store that the device has a widget and when it was last refreshed. This stops on its own a few
+days after you remove the widgets, and the token is removed when you sign out.</p>
+
+<h2 id="health">Apple Health data</h2>
+<p>If you choose to connect Apple Health, Gamut reads heart rate, heart rate variability, resting
+heart rate, heart rate recovery, respiratory rate, blood oxygen, sleeping wrist temperature, sleep,
+active energy, exercise minutes, body weight, VO<sub>2</sub> max and recorded workouts, and, from
+your Health profile, your biological sex, which is used only to compare your VO<sub>2</sub> max
+with people of your age and sex. If you use the Gamut Apple Watch app, it saves your
+strength-training workouts (with heart rate and active energy) to Apple Health. All of this is
+optional, the app works fully without it, and you can turn it off at any time in the iOS Health
+app.</p>
+
+<div class="callout key">
+  <p><strong>Apple Health readings stay on your device.</strong> They are stored in Gamut's local
+  cache on your phone. They are not uploaded to our servers, not shown to friends, coaches,
+  teammates or other users, not shared with any third party, not used for advertising or
+  marketing, and not sold. Ever, to anyone, for any purpose.</p>
+  <p><strong>The one exception is body weight.</strong> If Apple Health has a body-weight reading
+  from today and you have not logged a weigh-in yourself today, Gamut adds it to your weight log and
+  profile, which are saved to your account and used exactly like a weigh-in you type: to chart
+  progress toward a weight goal. Friends and coaches never see a body-weight number. You can avoid
+  this by not granting Gamut read access to Body Weight in the Health app.</p>
+  <p>Health readings do influence your training on your phone: your recovery score and the load
+  adjustment for a session are calculated there from those readings. When a workout is generated,
+  only the <em>resulting</em> training numbers are sent (an intensity percentage and your estimated
+  training maxes), never a heart rate, a sleep duration or any other health measurement.</p>
+</div>
+
+<h2 id="friends">Friends and the leaderboard</h2>
 
 <h3>Friends</h3>
 <p>If you claim a username, other Gamut users can find your account by exact username (or by email,
-as described above) and send a friend request. Once you accept, a friend can see your username,
-display name and profile picture; your streak, session count, personal-record count and achievement
-badges; your sessions and volume this week and this month; whether you trained today; the lift
-numbers shown on your Home screen; your progress toward your current goal; and a short summary of
-each completed session (its date and type, and how many exercises, sets and personal records it
-had, and the total weight moved). They never see anything from Apple Health and never a body-weight
-number. Friends can send you a "High Five" on a completed session, and you can challenge a friend
-to a streak race; that friend can see the target you are racing to and whether you are still
-racing, have reached it, or broke your streak first.</p>
+if you have turned that on) and send a friend request. Once you accept, a friend can see your
+username, display name and profile picture; your streak, session count, personal-record count and
+achievement badges; your sessions and volume this week and this month; whether you trained today;
+the lift numbers shown on your Home screen; your progress toward your current goal; and a short
+summary of each completed session (its date and type, and how many exercises, sets and personal
+records it had, and the total weight moved). They never see anything from Apple Health and never a
+body-weight number. Friends can send you a "High Five" on a completed session, and you can
+challenge a friend to a streak race; that friend can see the target you are racing to and whether
+you are still racing, have reached it, or broke your streak first.</p>
 <p>If you turn on push notifications for these features, we register a push notification token for
 your device so a friend request, High Five, challenge update or (if you turn it on) a friend's
 personal record can reach you when the app is closed. A notification about a friend's record names
-the friend and nothing else — never the lift or the number. The token is used for nothing else and
-is removed when you sign out.</p>
+the friend and nothing else, never the lift or the number. The token is removed when you sign
+out.</p>
 <p>You can remove a friend, block a user or report a user at any time. A report stores who reported
 whom, the reason you choose and any detail you add, so we can review it; reporting also blocks that
 user for you immediately.</p>
@@ -143,47 +216,61 @@ user for you immediately.</p>
 <h3>Global leaderboard</h3>
 <p>Once you have claimed a username, you appear on Gamut's global leaderboard, which <strong>every
 Gamut user can see</strong>, not only your friends. For each ranking it shows your username,
-display name, profile picture and the one figure being ranked — your sessions or total weight
-moved this week or this month, your streak, or your number of personal records — and your
+display name, profile picture and the one figure being ranked (your sessions or total weight
+moved this week or this month, your streak, or your number of personal records) and your
 position. Nothing else from your profile or history is shown there. People you have blocked, and
 people who have blocked you, do not see each other on it.</p>
 
-<h3>Teams: if you join one as a player</h3>
-<p>You join a team only by entering a code from its coach, and only after agreeing, on a screen that
-lists exactly what is shared, to share your training with that team's coaches (its head coach and
-up to three assistant coaches). While sharing is on, your coaches can see: the name you give when
-joining; when you last trained, which days you trained over the last five weeks, your sessions
-completed against your plan, your streak, your personal-record count and your recent personal
-records (the lift, the weight, the reps and the date); your estimated maxes on
-your main lifts and how they have trended; your training load from Gamut workouts (your effort
-rating multiplied by the session's length, by week, and your last 7 days compared with your usual
-week) and your average effort rating; your current training block, week and season phase, and
-whether this is a planned lighter (deload) week; a summary of
-your recent sessions (the date, the workout's title, how many sets you did, the total weight moved,
-your effort rating and any exercise you skipped); and which <em>types</em> of movement you are
-avoiding because of an injury or limitation (for example "overhead pressing").</p>
-<div class="callout">
-  <p><strong>Coaches never see</strong> anything from Apple Health (no heart rate, HRV, sleep,
-  recovery or readiness), your body weight, the note you wrote about an injury, or any other note
-  you write for yourself. Coaches cannot change your program or send you private messages.</p>
+<h2 id="teams">Teams</h2>
+
+<h3>If you join a team as a player</h3>
+<p>You join a team only by entering a code from its coach (or opening their invite link), and only
+after agreeing, on a screen that lists exactly what is shared, to share your training with that
+team's coaches: its head coach and up to three assistant coaches.</p>
+<div class="split">
+  <div>
+    <h3>While sharing is on, coaches see</h3>
+    <ul class="ticks">
+      <li>The name you give when joining</li>
+      <li>When you last trained, which days you trained over the last five weeks, sessions completed against your plan, and your streak</li>
+      <li>Your personal-record count and recent records (the lift, weight, reps and date)</li>
+      <li>Your estimated maxes on your main lifts and how they have trended</li>
+      <li>Your training load from Gamut workouts (effort rating times session length, by week, and your last 7 days against your usual week) and your average effort rating</li>
+      <li>Your current block, week and season phase, and whether this is a planned lighter week</li>
+      <li>A summary of recent sessions: date, title, sets done, total weight moved, effort rating and any exercise you skipped</li>
+      <li>Which <em>types</em> of movement you are avoiding because of an injury (for example "overhead pressing")</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Coaches never see</h3>
+    <ul class="crosses">
+      <li>Anything from Apple Health: no heart rate, HRV, sleep, recovery or readiness</li>
+      <li>Your body weight</li>
+      <li>The note you wrote about an injury</li>
+      <li>Any other note you write for yourself</li>
+    </ul>
+    <p>Coaches cannot change your program or send you private messages.</p>
+  </div>
 </div>
 <p><strong>What your coaches can send you.</strong> Your coaches can post short announcements to
 the team, send you one of a fixed set of notes (for example "Great week of training. Keep it
 going."), give your sessions a High Five, and keep a team schedule of games, practices and off
-days. You can't reply to any of these; there is no messaging. The schedule shapes your training on
-your own phone: on a game day the app suggests resting, and the day before a game your session is
-lighter. A coach can also put you on a development plan (for a player not expected to play
-much that season): your program then keeps building through the season, game days don't change
-your training, and you are told, with the plan shown in Settings → Team. You can report an
-announcement from the app. You get notifications for announcements and
-notes only if you turn on "Team Updates" in Settings → Team.</p>
+days. You can't reply to any of these; there is no messaging. The team's sport, season and schedule
+shape your training on your own phone: on a game day the app suggests resting, and the day before a
+game your session is lighter. A coach can also put you on a development plan (for a player not
+expected to play much that season): your program then keeps building through the season, game days
+don't change your training, and you are told, with the plan shown in Settings → Team. You can
+report an announcement from the app. You get notifications for announcements and notes only if you
+turn on "Team Updates" in Settings → Team.</p>
 <p><strong>Your teammates</strong> (other players on the same team) see less than your coaches: the
 name you give when joining and your profile picture; when you last trained, your current streak,
 your number of sessions and personal records, and your sessions this week; and your latest session
 (the type of day, its date and how many exercises), so they can send you a High Five. Teammates
 never see your lifts, goals, training load, recent-session details or anything from Apple Health.
-You can turn this off in Settings → Team ("Show Me to Teammates"); while it is off, you are hidden
-from your teammates and they are hidden from you. Blocking a teammate hides you from each other.</p>
+If you turn on "Teammate PRs", a teammate's new record sends you a notification naming them and
+nothing else. You can turn teammate visibility off in Settings → Team ("Show Me to Teammates");
+while it is off, you are hidden from your teammates and they are hidden from you. Blocking a
+teammate hides you from each other.</p>
 <p><strong>Sharing can be turned off at any time</strong> in Settings → Team. When you turn it off,
 the summary your coaches could see is deleted from our servers straight away and nothing more is
 sent; your coaches see only that your sharing is off. You can also leave the team at any time.
@@ -194,36 +281,41 @@ sessions; an alert names you and says which of these happened, and nothing more.
 the app, your coaches stop seeing your training, and your own training history stays in your
 account.</p>
 
-<h3>Teams: if you are a coach</h3>
-<p>We store your team's name and sport, the name you give your players, your team's join codes,
-which alerts you have turned on, your team's schedule, the announcements and notes you send (with
-your name on them), how you have arranged your roster (position groups, starters and order, visible
-only to your coaching staff), which players you have put on a development plan (each of those
-players is told), and your team plan (how many players it covers, when it is paid
-through, and the email address it was bought with, which is how the plan is matched to your
-account). Your players see your team's name and their coaches' names, never your account email.
-What you can see about your players is described above and is visible only to your team's coaching
-staff.</p>
+<h3>If you are a coach</h3>
+<p>We store your team's name, sport and season, the name you give your players, your team's join
+codes, which alerts you have turned on, your team's schedule, the announcements and notes you send
+(with your name on them), how you have arranged your roster (position groups, starters and order,
+visible only to your coaching staff), which players you have put on a development plan (each of
+those players is told), and your team plan (how many players it covers, when it is paid through,
+and the email address it was bought with, which is how the plan is matched to your account). Your
+players see your team's name and their coaches' names, never your account email. What you can see
+about your players is described above and is visible only to your team's coaching staff. The coach
+widgets on your Lock Screen show counts only, never a player's name.</p>
 
-<h3>Team plans bought on our website</h3>
-<p>Team plans are bought on our website through Stripe, and sold through Link, Stripe's payment
-service, which acts as the seller of record and calculates and collects sales tax. At checkout,
-Stripe collects your payment details, email address, billing address and, if you give them, your
-organization's name and tax ID. <strong>We never receive your card or bank details.</strong> Stripe
-sends us the purchaser's email address, which plan was bought, whether it is active and when it
-renews or ends, and Stripe's own identifiers for the customer and the subscription. Stripe's
-handling of your purchase is governed by
-<a href="https://stripe.com/privacy">Stripe's Privacy Policy</a> and
-<a href="https://link.com/privacy">Link's Privacy Policy</a>.</p>
+<h2 id="payments">Subscriptions and team plans</h2>
 
 <h3>Your subscription</h3>
 <p>When you subscribe or start a free trial, Apple gives your device a signed record of the
 purchase. We send that record to our server to verify it with Apple's signature, and store the
 product you chose, when your current period (or free trial) ends, the transaction's identifier and
-whether it was a test purchase — so the service can confirm your subscription. We never receive
-your payment details or your Apple ID.</p>
+whether it was a test purchase, so the service can confirm your subscription. A new purchase is
+tagged with your Gamut account's random identifier, which Apple keeps with the purchase, so that a
+subscription unlocks only the account that bought it. We never receive your payment details or
+your Apple ID.</p>
 
-<h3>What we deliberately do not collect</h3>
+<h3>Team plans</h3>
+<p>Team plans are bought outside the app through Stripe, and sold through Link, Stripe's payment
+service, which acts as the seller of record and calculates and collects sales tax. At checkout,
+Stripe collects your payment details, email address, billing address and, if you give them, your
+organization's name and tax ID. <strong>We never receive your card or bank details.</strong> Stripe
+sends us the purchaser's email address, which plan was bought, whether it is active and when it
+renews or ends, and Stripe's own identifiers for the customer and the subscription. If we invite a
+coach to a free trial team plan, we store the email address the invitation was sent to. Stripe's
+handling of your purchase is governed by
+<a href="https://stripe.com/privacy">Stripe's Privacy Policy</a> and
+<a href="https://link.com/privacy">Link's Privacy Policy</a>.</p>
+
+<h2 id="not-collected">What we deliberately do not collect</h2>
 <ul>
   <li><strong>No payment details.</strong> Individual subscriptions are billed by Apple through your
   Apple ID, and team plans by Stripe. We never receive or store your card number, bank details or
@@ -233,33 +325,33 @@ your payment details or your Apple ID.</p>
   never presents the App Tracking Transparency prompt because it has nothing to ask for.</li>
   <li><strong>No location, microphone or camera access.</strong> The app requests none of these
   permissions. It uses your photo library only when you choose a profile picture, and your
-  contacts only when you use contact matching — both optional, and the app works fully without
+  contacts only when you use contact matching. Both are optional, and the app works fully without
   either.</li>
   <li><strong>Training reminders are local.</strong> Workout reminders, streak alerts, recovery
   tips, the weekly recap and the reminder before a free trial ends are scheduled entirely on your
-  device — nothing is sent from a server for these. Only the Friends and Teams notifications
-  described above are sent from our server.</li>
+  device; nothing is sent from a server for these. Only the Friends and Teams notifications
+  described above, and the silent widget refresh, are sent from our server.</li>
 </ul>
 
-<h2>How your data is used</h2>
+<h2 id="use">How your data is used</h2>
 <div class="table-scroll">
 <table>
   <thead>
     <tr><th>Data</th><th>Used for</th></tr>
   </thead>
   <tbody>
-    <tr><td>Email, password or Apple/Google sign-in</td><td>Signing you in; recovering your account; syncing your training between devices</td></tr>
+    <tr><td>Email, password or Apple/Google sign-in</td><td>Signing you in; confirming your address; recovering your account; syncing your training between devices</td></tr>
     <tr><td>Training profile</td><td>Choosing your block length, exercise selection and periodization</td></tr>
     <tr><td>Injuries and limitations</td><td>Keeping the movements you asked to avoid out of your workouts</td></tr>
-    <tr><td>Logged sets and ratings</td><td>Estimating your one-rep maxes, adjusting future loads, streaks and milestones</td></tr>
+    <tr><td>Logged sets and ratings</td><td>Estimating your one-rep maxes, adjusting future loads, training load, streaks and milestones</td></tr>
     <tr><td>Body weight log</td><td>Charting progress toward a weight-based goal</td></tr>
     <tr><td>Apple Health readings</td><td>Your on-device recovery score and load adjustment; body weight as described above</td></tr>
     <tr><td>Subscription record</td><td>Confirming whether your free trial or subscription is active</td></tr>
     <tr><td>Username, profile picture, shared stats, friend list</td><td>Letting friends you've added see your progress, send High Fives and race streak challenges; showing you on the global leaderboard</td></tr>
-    <tr><td>Hash of your own email address</td><td>Letting another user's contact search find your account, if they already have your email (turn off with "Findable by Email")</td></tr>
-    <tr><td>Team membership and the training summary you share</td><td>Letting your team's coaches follow your training while sharing is on; sending them the alerts described above</td></tr>
+    <tr><td>Hash of your own email address</td><td>Letting another user's contact search find your account, only if you turned on "Findable by Email"</td></tr>
+    <tr><td>Team membership and the training summary you share</td><td>Letting your team's coaches follow your training while sharing is on; showing you to teammates; sending the alerts described above</td></tr>
     <tr><td>Team plan record</td><td>Confirming a team's plan is active and how many players it covers; matching a purchase to the coach who made it</td></tr>
-    <tr><td>Push notification token</td><td>Delivering friend requests, High Fives, challenge updates, friends' and teammates' record alerts, coaches' team alerts and weekly reports, team announcements and notes, and team notices</td></tr>
+    <tr><td>Push notification token</td><td>Delivering friend requests, High Fives, challenge updates, friends' and teammates' record alerts, coaches' team alerts and weekly reports, team announcements and notes, and team notices; waking the app to refresh your widgets</td></tr>
     <tr><td>Reports</td><td>Reviewing reported conduct and enforcing our Terms</td></tr>
     <tr><td>Daily generation count</td><td>Limiting how many workouts can be generated per day, to prevent abuse</td></tr>
   </tbody>
@@ -268,35 +360,36 @@ your payment details or your Apple ID.</p>
 <p>We do not use your data for advertising, profiling for marketing purposes, or automated
 decisions with legal or similarly significant effects.</p>
 
-<h2>Who processes your data</h2>
+<h2 id="processors">Who processes your data</h2>
 <p>We use a small number of service providers. Each one only receives what its function requires.</p>
 
 <h3>Supabase</h3>
 <p>Hosts our database, file storage and authentication. Your account, training profile, logged
 sets, workout history, subscription record and profile picture are stored there. Database rules
 make each account's rows readable only by that account, except for what you share with friends,
-on the leaderboard and with your team's coaches as described above. Data is held on servers in the
-United States.</p>
+teammates, on the leaderboard and with your team's coaches as described above. Data is held on
+servers in the United States.</p>
 
 <h3>Anthropic</h3>
 <p>Generates the exercise selection for each workout. When you generate a day, we send: your goal
 and training focus (including the lift your goal names, if any), the sports you listed, your season
 phase, your age, your experience level and the Olympic lifts you've been coached on, your available
-equipment and preferred exercises, your session length, your unit preference, any active injuries
-and limitations (the movement types to avoid and your note), your target intensity for the day,
-your estimated training maxes, and from your last few sessions the exercise names, your effort
-ratings and any exercises you skipped.</p>
+equipment, training setting and preferred exercises, your session length and training days per
+week, your unit preference, any active injuries and limitations (the movement types to avoid and
+your note), your target intensity for the day, your estimated training maxes, how much you have
+already trained this week, and from your last few sessions the exercise names, your effort ratings
+and any exercises you skipped.</p>
 <p><strong>Your name, email address, body weight and Apple Health data are not sent.</strong> The
 request is not used to train any model.</p>
 
 <h3>Expo</h3>
-<p>Delivers Friends and Teams push notifications to Apple's notification service. It receives your
-device's push token and the notification's text (for example, who sent you a High Five, or that a
-player joined your team), and nothing else.</p>
+<p>Delivers Friends and Teams push notifications, and the silent widget refresh, to Apple's
+notification service. It receives your device's push token and the notification's text (for
+example, who sent you a High Five, or that a player joined your team), and nothing else.</p>
 
 <h3>Stripe and Link</h3>
-<p>Process team plan payments and calculate sales tax, as described in "Team plans bought on our
-website". They do not receive any of your training data.</p>
+<p>Process team plan payments and calculate sales tax, as described in "Team plans". They do not
+receive any of your training data.</p>
 
 <h3>Apple</h3>
 <p>Distributes the app, processes subscription payments and provides Sign in with Apple. Apple's
@@ -304,44 +397,61 @@ handling of your purchase and sign-in is governed by
 <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
 
 <h3>Google</h3>
-<p>Provides Sign in with Google, if you use it. Google's handling of that sign-in is governed by
+<p>Provides Sign in with Google, if you use it, and sends our account emails (address confirmation
+and password reset) through Gmail, so it receives your email address and the content of those
+messages. Google's handling of both is governed by
 <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
-<h2>Where your data is stored on your device</h2>
-<p>Your training data is kept on your phone so the app works without a connection — which matters
-in a gym with no signal. Your login session is stored separately in the iOS Keychain rather than in
-ordinary app storage, because a session token is a credential rather than app data. The Home
-Screen widget and the rest-timer Live Activity read a small summary kept on your phone; nothing
-extra is sent anywhere to show them.</p>
+<h3>GitHub</h3>
+<p>Hosts this website. See "This website" below.</p>
 
-<h2>How long we keep it</h2>
+<h2 id="website">This website</h2>
+<p>This website sets no cookies and runs no analytics, advertising or tracking. It is hosted on
+GitHub Pages, and its pages load their typeface from Google Fonts; both receive your IP address and
+browser details when you visit, as any web host does, under
+<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's
+Privacy Statement</a> and Google's Privacy Policy. The page a coach sees after buying a team plan
+asks our server for the plan's claim code; to stop that being abused, our server keeps a one-way
+hash of the requesting IP address, never the address itself, and deletes it within two days.</p>
+
+<h2 id="device">Where your data is stored on your device</h2>
+<p>Your training data is kept on your phone so the app works without a connection, which matters
+in a gym with no signal. Your login session is stored separately in the iOS Keychain rather than in
+ordinary app storage, because a session token is a credential rather than app data. It is readable
+after you first unlock your phone following a restart, so the widgets can refresh while the phone
+is locked. The Home Screen and Lock Screen widgets, the Apple Watch app and the rest-timer Live
+Activity read a small summary kept on your phone.</p>
+
+<h2 id="retention">How long we keep it</h2>
 <p>Your training data is kept for as long as your account exists, because its entire value is being
 a long record. Delete your account and it is removed immediately and permanently. The summary your
 coaches see is deleted when you turn sharing off, leave or are removed from the team, or the
-team's program ends.</p>
+team's program ends. Push tokens not seen for 60 days are deleted. Hashed IP addresses are deleted
+within two days.</p>
 
-<h2>Your choices and rights</h2>
+<h2 id="rights">Your choices and rights</h2>
 <ul>
-  <li><strong>Clear Training Data</strong> — in Settings, wipes every workout, set and record while
+  <li><strong>Clear Training Data</strong> (in Settings) wipes every workout, set and record while
   keeping your account, username, friends and profile picture. Irreversible.</li>
-  <li><strong>Delete My Account</strong> — in Settings, permanently deletes your account, your email
+  <li><strong>Delete My Account</strong> (in Settings) permanently deletes your account, your email
   address, your profile picture, your username and friends, and every row of training data in one
   operation. There is no recovery and no grace period. It does not cancel an Apple subscription;
   cancel that in your Apple ID settings. If you are a team's head coach, deleting your account also
   ends the team's program, and its players and assistant coaches are told.</li>
-  <li><strong>Remove your profile picture</strong> — on the Profile tab, at any time.</li>
-  <li><strong>Findable by Email</strong> — in Settings, turn off to stop other users' contact
-  searches from finding you.</li>
-  <li><strong>Team sharing</strong> — in Settings → Team, turn off sharing with your coaches, or leave
-  the team. Coaches turn their alerts on or off in their team settings.</li>
-  <li><strong>Notifications</strong> — each kind can be turned on or off in Settings.</li>
-  <li><strong>Disconnect Apple Health</strong> — in the iOS Health app under Sharing → Apps →
+  <li><strong>Remove your profile picture</strong> on the Profile tab, at any time.</li>
+  <li><strong>Findable by Email</strong> is off unless you turn it on in Settings; turn it off again
+  at any time.</li>
+  <li><strong>Team sharing and visibility</strong>: in Settings → Team, turn off sharing with your
+  coaches, hide yourself from teammates, or leave the team. Coaches turn their alerts on or off in
+  their team settings.</li>
+  <li><strong>Notifications</strong>: each kind can be turned on or off in Settings.</li>
+  <li><strong>Disconnect Apple Health</strong>: in the iOS Health app under Sharing → Apps →
   Gamut, turn off the categories you no longer want Gamut to read. Readings already cached on your
   phone are deleted when you sign out, switch accounts or delete the app.</li>
-  <li><strong>Revoke Contacts or Photos access</strong> — in iOS Settings → Privacy & Security.
+  <li><strong>Revoke Contacts or Photos access</strong> in iOS Settings → Privacy &amp; Security.
   Revoking Contacts stops future contact searches from being run by you; it does not undo a match
   that already happened.</li>
-  <li><strong>Access and correction</strong> — your profile is editable in the app. For a copy of
+  <li><strong>Access and correction</strong>: your profile is editable in the app. For a copy of
   your data in a portable format, email us.</li>
 </ul>
 <p>Depending on where you live, you may have additional rights under the GDPR (EU/UK) or the CCPA
@@ -350,38 +460,44 @@ personal information or share it for cross-context behavioural advertising, as t
 defined by the CCPA. To exercise any right, email
 <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>.</p>
 
-<h2>Security</h2>
+<h2 id="security">Security</h2>
 <p>All traffic between the app and our servers uses TLS. Database access is restricted per account
 by row-level security policies enforced by the database itself. Your login session is stored in the
 iOS Keychain. No credential in the app can read or modify another account's private data.</p>
 <p>No system is perfectly secure. If we become aware of a breach affecting your data, we will
 notify you and any regulator required by law.</p>
 
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>Gamut is for people aged 13 and over. It is not directed at children under 13, the app does not
 let you set up a profile with an age under 13, and we do not knowingly collect data from them.
 Because the app prescribes resistance training loads, users under 16 should train under qualified
 supervision, such as a coach's. If you believe a child under 13 has created an account, email us
 and we will delete it.</p>
 
-<h2>International transfers</h2>
+<h2 id="transfers">International transfers</h2>
 <p>Our servers are in the United States. If you use Gamut from elsewhere, your data is transferred
 to and processed there, under appropriate safeguards for transfers out of the EEA and UK.</p>
 
-<h2>Changes to this policy</h2>
+<h2 id="changes">Changes to this policy, and contact</h2>
 <p>If we change this policy we will update the date at the top. If a change materially affects how
 your data is handled, we will tell you in the app before it takes effect.</p>
+<p>Questions or requests: <a href="mailto:support@gamutapp.com">support@gamutapp.com</a></p>
 
-<h2>Contact</h2>
-<p><a href="mailto:support@gamutapp.com">support@gamutapp.com</a></p>
+  </article>
+</div>
 
-<footer class="pagefoot">
-  <span>© 2026 Gamut</span>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="terms.html">Terms of Use</a>
-  <a href="support.html">Support</a>
+</main>
+
+<footer class="site">
+  <div class="container"><div class="links">
+    <span>© 2026 Gamut</span>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>
+  </div></div>
 </footer>
 
-</div>
+<script src="docs.js"></script>
 </body>
 </html>

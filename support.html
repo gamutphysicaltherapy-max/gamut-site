@@ -4,154 +4,469 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Gamut</title>
-<meta name="description" content="Help with Gamut: subscriptions, Apple Health, account deletion and contact.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Help with Gamut: subscriptions, training, Apple Health and Apple Watch, friends, teams for players and coaches, and your account.">
+<meta name="theme-color" content="#3d4b35">
+<link rel="icon" type="image/png" href="img/emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css">
+<!--
+  The App Store listing's Support URL, and opened from the app's Settings.
+  Because the app opens it, nothing here may link to teams.html, name a team
+  price or invite anyone to buy a team plan (guideline 3.1.1). The coach
+  answers cover using a plan that already exists; billing questions point to
+  the purchase emails and to support, never to the plans page.
+  Menu paths must match the app's labels (src/screens/SettingsScreen.tsx and
+  the coach screens).
+-->
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="mark">G</div>
-  <div class="mark-text">
-    <span class="wordmark">Gamut</span>
-    <span class="tagline">Automated strength programming</span>
+<header class="topbar">
+  <div class="container">
+    <span class="brand"><span class="emblem" aria-hidden="true"></span><span class="brand-name">Gamut</span></span>
+    <nav class="topnav" aria-label="Documents">
+      <a href="support.html" aria-current="page">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
   </div>
 </header>
 
-<h1>Support</h1>
-<p class="lede">Answers to the things people ask most, and a way to reach a human.</p>
-<p class="updated">Last updated 30 September 2026</p>
+<main id="main">
 
-<div class="callout">
-  <p><strong>Email <a href="mailto:support@gamutapp.com">support@gamutapp.com</a></strong> and you
-  will get a reply within two business days. Include your account email and, if something went
-  wrong, roughly when it happened.</p>
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Support</p>
+    <h1>Help with Gamut, <em>from a real person.</em></h1>
+    <p class="lede">Quick answers for athletes, players and coaches. Can't find yours? Email us and
+    a person who knows the app will write back.</p>
+    <div class="contact">
+      <p><b>support@gamutapp.com</b>We reply within two business days. Tell us your account email
+      and, if something went wrong, roughly when.</p>
+      <a class="btn btn-light" href="mailto:support@gamutapp.com?subject=Gamut%20support">Email support <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="container glance">
+  <div class="tiles">
+    <a class="tile" href="#subscription"><b>Subscription</b><span>Free trial, cancelling, restoring a purchase, refunds.</span></a>
+    <a class="tile" href="#training"><b>Training</b><span>Weights, swaps, injuries, rest days and the rest timer.</span></a>
+    <a class="tile" href="#players"><b>On a team</b><span>Joining, what your coach sees, sharing and teammates.</span></a>
+    <a class="tile" href="#coaches"><b>Coaches</b><span>Setting up, adding players and staff, alerts and billing.</span></a>
+  </div>
 </div>
 
-<h2>Subscription</h2>
+<div class="container doc">
+  <nav class="toc-wrap" aria-label="On this page">
+    <details class="toc" open>
+      <summary>Topics</summary>
+      <ol>
+        <li><a href="#subscription">Subscription</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#health">Apple Health, Watch and widgets</a></li>
+        <li><a href="#friends">Friends and social</a></li>
+        <li><a href="#players">Teams: for players</a></li>
+        <li><a href="#coaches">Teams: for coaches</a></li>
+        <li><a href="#account">Your account and data</a></li>
+        <li><a href="#broken">Something looks broken</a></li>
+      </ol>
+    </details>
+  </nav>
 
-<h3>How does the free trial work?</h3>
+  <article class="prose">
+
+<p class="updated">Last updated 19 October 2026</p>
+
+<section class="faq-group">
+<h2 id="subscription">Subscription</h2>
+
+<details class="q"><summary>How does the free trial work?</summary><div class="a">
 <p>New subscribers get 14 days free. You start the trial at the end of setup by choosing a monthly
 or yearly plan; Apple asks you to confirm with your Apple ID, but nothing is charged for the first
-14 days. When the trial ends, the plan you chose begins and is billed by Apple — unless you cancel
+14 days. When the trial ends, the plan you chose begins and is billed by Apple, unless you cancel
 at least 24 hours before the trial ends, in which case you are never charged. The trial is available
-once per Apple ID. Your training history stays exactly where it is either way.</p>
+once per Apple ID. <strong>Settings → Subscription</strong> shows how many days are left. Your
+training history stays exactly where it is either way.</p>
+</div></details>
 
-<h3>How do I cancel?</h3>
+<details class="q"><summary>How do I cancel?</summary><div class="a">
 <p>Subscriptions are billed by Apple, so they are cancelled in iOS rather than in Gamut:</p>
 <ol>
   <li>Open <strong>Settings</strong> on your iPhone.</li>
   <li>Tap your name at the top, then <strong>Subscriptions</strong>.</li>
   <li>Tap <strong>Gamut</strong>, then <strong>Cancel Subscription</strong>.</li>
 </ol>
-<p>Cancel at least 24 hours before your renewal date to avoid being charged for the next period.
-You keep access until the period you have already paid for runs out. Deleting the app does not
-cancel the subscription.</p>
+<p>You can also get there from <strong>Settings → Subscription → Manage</strong> in Gamut. Cancel
+at least 24 hours before your renewal date to avoid being charged for the next period. You keep
+access until the period you have already paid for runs out. Deleting the app, or your Gamut
+account, does not cancel the subscription.</p>
+</div></details>
 
-<h3>I was charged but the app still asks me to subscribe</h3>
-<p>Open Gamut, go to the subscription screen and tap <strong>Restore purchases</strong>. That asks
-the App Store to replay your purchase to the app. Make sure you are signed in with the same Apple
-ID you bought it with. If it still does not appear, email us.</p>
+<details class="q"><summary>I was charged, but the app still asks me to subscribe</summary><div class="a">
+<p>Tap <strong>Restore Purchases</strong>, on the subscription screen or in <strong>Settings →
+Subscription</strong>. That asks the App Store to send your purchase to the app again. Make sure
+you are signed in to the same Apple ID you bought it with, and to the same Gamut account: a
+subscription unlocks only the Gamut account that bought it. If it still does not appear, email
+us.</p>
+</div></details>
 
-<h3>Can I get a refund?</h3>
-<p>Refunds are handled by Apple, not by us — we have no ability to issue them. Request one at
-<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+<details class="q"><summary>Can I switch from monthly to yearly?</summary><div class="a">
+<p>Yes. Choose <strong>Switch to Yearly</strong> in <strong>Settings → Subscription</strong>. The
+yearly plan starts straight away, your monthly plan ends, and Apple refunds the unused part of the
+month. You can only hold one Gamut plan at a time.</p>
+</div></details>
 
-<h2>Apple Health</h2>
+<details class="q"><summary>Can I get a refund?</summary><div class="a">
+<p>Refunds for subscriptions bought in the app are handled by Apple, not by us; we have no way to
+issue them. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+</div></details>
 
-<h3>What does Gamut read, and why?</h3>
-<p>Heart rate variability, resting heart rate, sleep, body weight, VO<sub>2</sub> max and recorded
-workouts. They are used to work out how recovered you are and to ease off the day's loads when your
-markers say you need it. Connecting is entirely optional and the app works fully without it.</p>
+<details class="q"><summary>My team covers me. Do I still need my own subscription?</summary><div class="a">
+<p>No. While you are on a team with an active team plan, the team covers you, and
+<strong>Settings → Subscription</strong> says so. If you were already paying Apple yourself, that
+subscription keeps billing until you cancel it in your Apple ID settings (see "How do I cancel?").
+If you leave the team later, you can subscribe again on your own and keep all your history.</p>
+</div></details>
+</section>
 
-<h3>Does my health data leave my phone?</h3>
-<p>Almost never. Health readings are read on your device, cached on your device, and never shared
-with friends or other users, or sold. The one exception is body weight: if Apple Health has a
-weigh-in from today and you haven't logged one yourself, Gamut adds it to your weight log, which is
-saved to your account like any weigh-in. See the <a href="privacy.html">Privacy Policy</a> for the
-detail.</p>
+<section class="faq-group">
+<h2 id="training">Training</h2>
 
-<h3>I connected it but I do not see any readings</h3>
-<p>Two common reasons. First, Gamut needs about two weeks of data before it will show a comparison
-— a baseline built from fewer readings is noise, so it says it is still building rather than
-showing you something misleading. Second, iOS never tells an app which health permissions you
-granted, only that you were asked. If you declined a category in the permission sheet, the app
-cannot tell — check <strong>Settings → Health → Data Access &amp; Devices → Gamut</strong> and turn
-on anything that is off.</p>
-
-<h2>Your account and data</h2>
-
-<h3>How do I delete my account?</h3>
-<p>In Gamut, go to <strong>Profile → Settings → Delete My Account</strong>. This permanently removes
-your account, your email address and every workout, set and record, in one operation. There is no
-recovery and no grace period.</p>
-
-<h3>How do I start over without losing my account?</h3>
-<p><strong>Profile → Settings → Clear Training Data</strong> wipes your training history but keeps
-your login. It does not affect your subscription or free trial.</p>
-
-<h3>I forgot my password</h3>
-<p>Tap <strong>Log in → Forgot password</strong>. You will be emailed a link. Open it on the same
-device you requested it from — for security, the link can only be completed on that device.</p>
-
-<h2>Friends & Social</h2>
-
-<h3>How do I add a friend?</h3>
-<p>Claim a username (you'll be asked right after you sign up, or later from
-<strong>Profile → Settings</strong>), then open the <strong>Social</strong> tab. Search for an exact
-username, or tap <strong>Find Friends from Your Contacts</strong> to see which of your phone
-contacts already use Gamut — this only compares one-way hashes of email addresses, never a raw
-email or contact detail; see the <a href="privacy.html">Privacy Policy</a> for how that works. Send
-a request, and once they accept, you're friends.</p>
-
-<h3>What can a friend see about me?</h3>
-<p>Your username, streak, session count, personal-record count, achievement badges, lift numbers
-you've logged, and your progress toward your current goal. Never anything read from Apple Health,
-and never a raw body-weight number.</p>
-
-<h3>What's a "High Five"?</h3>
-<p>A quick way for a friend to acknowledge a session you completed, without a comment thread.
-Turn High Five notifications on or off in <strong>Profile → Settings → Notifications</strong>.</p>
-
-<h3>What's a streak challenge?</h3>
-<p>A race with a friend to a target streak length you both pick — say, 30 days in a row. Whoever
-reaches it first wins. Breaking your own streak before then is a loss for you only; it has no effect
-on your friend's side of the race.</p>
-
-<h3>Someone is bothering me on Gamut. What do I do?</h3>
-<p>Open their profile and tap <strong>Block</strong> — they immediately lose the ability to see your
-profile, contact you, or challenge you. You can also tap <strong>Report</strong> to flag their
-account to us; blocking and reporting are independent, so you can do either or both. For anything
-else, email <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>.</p>
-
-<h3>How do I remove a friend?</h3>
-<p>Open their profile and tap <strong>Remove Friend</strong>. This does not block them — they could
-send you a new request later unless you also block them.</p>
-
-<h2>Training</h2>
-
-<h3>Why can I only generate one workout a day?</h3>
+<details class="q"><summary>Why can I only generate one workout a day?</summary><div class="a">
 <p>Because a training block is a sequence, not a menu. Each day is built from where you are in the
-block, what you did recently and how you rated it — generating several at once would mean guessing
+block, what you did recently and how you rated it. Generating several at once would mean guessing
 at ratings that do not exist yet.</p>
+</div></details>
 
-<h3>The weights look wrong for a lift I have never done</h3>
+<details class="q"><summary>My first workout has no weights</summary><div class="a">
+<p>Gamut won't guess at a number it has nothing to base on. A main lift with no weight shows
+<strong>Finding your working weight</strong>: pick a weight you could lift for the reps with a few
+left in the tank, log it and rate how it felt. To give Gamut your numbers up front, tap <strong>Log
+a Lift</strong> on Home and enter a recent set for each big lift. Logged sets replace any guess
+within a session or two.</p>
+</div></details>
+
+<details class="q"><summary>The weights look wrong for a lift I've never done</summary><div class="a">
 <p>For a main lift with no logged history, Gamut estimates a starting weight from conventional
 strength ratios and deliberately biases it low, because on an unfamiliar lift the limiter is
-usually technique. Log a set and rate it — if it was easy, the app steps the number up next
+usually technique. Log a set and rate it. If it was easy, the app steps the number up next
 session, and once you have real logged sets it uses those instead of the estimate.</p>
+</div></details>
 
-<h3>Something looks broken</h3>
-<p>Email <a href="mailto:support@gamutapp.com">support@gamutapp.com</a> with what you were doing,
-what you expected and what happened. A screenshot helps more than anything else.</p>
+<details class="q"><summary>I don't have the equipment for an exercise, or I don't want to do it</summary><div class="a">
+<p>Tap the <strong>⋯</strong> menu on the exercise card. <strong>Swap</strong> replaces it with
+another exercise for the same muscles that fits your equipment, keeping the same sets and reps.
+<strong>Skip</strong> sets it aside for today. If you skip the same exercise in two or more recent
+sessions, Gamut stops programming it for the rest of the block. If your gym setup has changed, update
+it in <strong>Settings → Program → Program &amp; Equipment Settings</strong>.</p>
+</div></details>
 
-<footer class="pagefoot">
-  <span>© 2026 Gamut</span>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="terms.html">Terms of Use</a>
-  <a href="support.html">Support</a>
+<details class="q"><summary>I'm hurt. How do I keep a movement out of my workouts?</summary><div class="a">
+<p>Open <strong>Settings → Program → Program &amp; Equipment Settings</strong> and add an entry
+under <strong>Injuries &amp; Limitations</strong>. Choose the movement types to avoid (for example
+overhead pressing, or jumping and landing), how long for (1, 2 or 4 weeks, or until you remove it)
+and an optional note. Gamut leaves those movements out and checks every workout against them. It
+is not treatment: follow the advice of whoever is treating you.</p>
+</div></details>
+
+<details class="q"><summary>I'm taking a day off. Will it hurt my streak?</summary><div class="a">
+<p>Tap <strong>Make Today a Rest Day</strong> on Home's Today card. Resting on your plan's normal
+rest days never costs your streak, and if a rest day would end it, the card tells you before you
+rest. A rest day doesn't skip your program ahead: the session that was next is still next
+tomorrow. Changed your mind? Undo it, or generate anyway.</p>
+</div></details>
+
+<details class="q"><summary>I forgot to tap Mark Workout Complete</summary><div class="a">
+<p>No problem. If you logged at least one set, Gamut finishes the session for you at the end of its
+day, credits that day to your streak and marks it <strong>Auto-saved</strong> in your history.</p>
+</div></details>
+
+<details class="q"><summary>How do I use kilograms, or turn off the automatic rest timer?</summary><div class="a">
+<p><strong>Settings → Units</strong> switches between pounds and kilograms; prescribed weights are
+rounded to plates you can actually load. The rest timer starts by itself when you check a working
+set and shows on your Lock Screen; turn that off in <strong>Settings → Workout</strong>, or start
+the timer by hand from the rest time on any exercise.</p>
+</div></details>
+</section>
+
+<section class="faq-group">
+<h2 id="health">Apple Health, Apple Watch and widgets</h2>
+
+<details class="q"><summary>What does Gamut read from Apple Health, and why?</summary><div class="a">
+<p>Heart rate, heart rate variability, resting heart rate, heart rate recovery, respiratory rate,
+blood oxygen, sleeping wrist temperature, sleep, active energy, exercise minutes, body weight,
+VO<sub>2</sub> max and recorded workouts. They are used to work out how recovered you are, to ease
+off the day's loads when your markers say you need it, and to show your strain, stress and energy.
+Connecting is entirely optional, and the app works fully without it.</p>
+</div></details>
+
+<details class="q"><summary>Does my health data leave my phone?</summary><div class="a">
+<p>Almost never. Health readings are read on your device, cached on your device, and never shared
+with friends, coaches, teammates or anyone else, or sold. The one exception is body weight: if Apple
+Health has a weigh-in from today and you haven't logged one yourself, Gamut adds it to your weight
+log, which is saved to your account like any weigh-in. See the <a href="privacy.html#health">Privacy
+Policy</a> for the detail.</p>
+</div></details>
+
+<details class="q"><summary>My readiness score says it's calibrating, or I don't see readings</summary><div class="a">
+<p>Gamut won't show a score it can't back up. Readiness appears after 3 to 7 days, sooner if
+your Watch already has a few weeks of history. HRV and resting heart rate comparisons need about a
+week of nights to build your own baseline. If a reading never appears, check
+<strong>Settings → Health → Data Access &amp; Devices → Gamut</strong> on your iPhone and turn on
+anything that is off: iOS never tells an app which permissions you declined.</p>
+</div></details>
+
+<details class="q"><summary>Sleep heart rate, HRV and blood oxygen are blank after a night's sleep</summary><div class="a">
+<p>That usually means your Apple Watch was in Low Power Mode. It still tracks sleep stages and
+breathing but turns off background heart rate, HRV and blood oxygen, so there is nothing to read.
+The Health Monitor shows "Not measured last night" when that happens.</p>
+</div></details>
+
+<details class="q"><summary>How do I use Gamut on my Apple Watch?</summary><div class="a">
+<p>Install Gamut on your Watch from the Watch app on your iPhone, and connect Apple Health in Gamut.
+Then press <strong>Start</strong> on a workout on your phone and the Watch app opens with it. Each
+exercise gets its own page: check off sets, change the weight with the Digital Crown, and see your
+rest countdown and heart rate. It ends the recording when you mark the workout complete. If it
+doesn't open by itself, open Gamut on your Watch and tap <strong>Record Heart Rate</strong>.</p>
+</div></details>
+
+<details class="q"><summary>How do I add a Gamut widget?</summary><div class="a">
+<p>Touch and hold your Home Screen, tap <strong>Edit</strong>, then <strong>Add Widget</strong>,
+and search for Gamut. There are four: <strong>Gamut</strong> (today's workout and your streak),
+<strong>Recovery</strong>, <strong>Stress &amp; Energy</strong> and <strong>Training Load</strong>,
+and Recovery also fits on the Lock Screen. Coaches also get <strong>Team Status</strong> and
+<strong>Team Today</strong>. Widgets refresh on their own while the app is closed, though iOS
+pauses that in Low Power Mode, and Health figures can't refresh while your phone is locked. Each
+widget shows when it was last updated.</p>
+</div></details>
+</section>
+
+<section class="faq-group">
+<h2 id="friends">Friends and social</h2>
+
+<details class="q"><summary>How do I add a friend?</summary><div class="a">
+<p>Claim a username (you're asked after you sign up, or later in <strong>Settings → Account →
+Choose a Username</strong>), then open the <strong>Social</strong> tab and tap <strong>Add a
+Friend</strong>. Search for their exact username, or tap <strong>Find Friends from Your
+Contacts</strong> to see which of your contacts use Gamut. That search only finds people who turned
+on <strong>Findable by Email</strong> in Settings, and it compares one-way hashes, never a raw email
+address (<a href="privacy.html#collect">how that works</a>). Friend not on Gamut yet? Tap
+<strong>Invite a Friend</strong> to send them the app.</p>
+</div></details>
+
+<details class="q"><summary>What can a friend see about me?</summary><div class="a">
+<p>Your username, profile picture, streak, session count, personal-record count, achievement
+badges, the lift numbers on your Home screen, this week's and this month's sessions and volume, and
+your progress toward your current goal. Never anything from Apple Health, and never a body-weight
+number. Once you have a username you also appear on the global leaderboard, which shows only your
+name, picture and the one figure being ranked.</p>
+</div></details>
+
+<details class="q"><summary>Can I change my username?</summary><div class="a">
+<p>Yes, in <strong>Settings → Account → Change Username</strong>. Your first change is free; after
+that you can change it once every 30 days. Your old name is freed for anyone to claim.</p>
+</div></details>
+
+<details class="q"><summary>What's a High Five, and what's a streak challenge?</summary><div class="a">
+<p>A High Five is a quick way for a friend or teammate to cheer a session you completed, with no
+comment thread. A streak challenge is a race with a friend to a streak length you pick, say 30 days
+in a row. Whoever gets there first wins; breaking your own streak is a loss for you only. Turn the
+notifications for each on or off in <strong>Settings → Social</strong>.</p>
+</div></details>
+
+<details class="q"><summary>Someone is bothering me on Gamut. What do I do?</summary><div class="a">
+<p>Open their profile (or the <strong>⋯</strong> menu on a teammate's card) and tap
+<strong>Block</strong>. They immediately lose the ability to see your profile, contact you or
+challenge you. You can also tap <strong>Report</strong> to flag them to us; reporting blocks them
+for you too. For anything else, email
+<a href="mailto:support@gamutapp.com">support@gamutapp.com</a>.</p>
+</div></details>
+
+<details class="q"><summary>How do I remove a friend?</summary><div class="a">
+<p>Open their profile and tap <strong>Remove Friend</strong>. This does not block them: they could
+send you a new request later unless you also block them.</p>
+</div></details>
+</section>
+
+<section class="faq-group">
+<p class="kicker">Teams</p>
+<h2 id="players">For players</h2>
+
+<details class="q"><summary>How do I join my team?</summary><div class="a">
+<p>Get your team code (or invite link) from your coach. If you're new, choose <strong>With a
+team</strong>, then <strong>I'm a player</strong> while setting up, and enter the code. Already
+using Gamut? Go to <strong>Settings → Team → Join a Team</strong>, or open the invite link. Before
+you join, Gamut shows exactly what your coaches will see. Players must be 13 or older.</p>
+</div></details>
+
+<details class="q"><summary>What can my coach see?</summary><div class="a">
+<p>A summary of your Gamut training: your lifts and estimated maxes, which days you trained, your
+streak and records, your training load and effort ratings, the exercises you skipped, which
+movements you're avoiding, and where you are in your block. <strong>Never</strong> anything from
+Apple Health, your body weight or the notes you write. Coaches can't change your program or message
+you privately. The full list is in the <a href="privacy.html#teams">Privacy Policy</a>.</p>
+</div></details>
+
+<details class="q"><summary>Can I stop sharing with my coach?</summary><div class="a">
+<p>Yes, any time, in <strong>Settings → Team</strong>. Your shared summary is deleted from our
+servers straight away, and your coaches see only that sharing is off. You can also <strong>Leave
+Team</strong> there. Either way your training history stays yours.</p>
+</div></details>
+
+<details class="q"><summary>What do my teammates see?</summary><div class="a">
+<p>Less than your coaches: your name and picture, when you last trained, your streak, your session
+and record counts, and your latest session so they can High Five it. Never your lifts, goals or
+training load. Turn off <strong>Show Me to Teammates</strong> in <strong>Settings → Team</strong> to
+hide; you'll stop seeing them too.</p>
+</div></details>
+
+<details class="q"><summary>My coach set our sport and season. Can I add another sport?</summary><div class="a">
+<p>Yes. Your team's sport is set for you, and you can add others in Home's <strong>Sports &amp;
+Seasons</strong> editor. Your coach's game days make the day before a game lighter, and on a game
+day Gamut suggests resting. If your coach put you on a <strong>development plan</strong>, you keep
+building through the season instead; Settings → Team says when that's on.</p>
+</div></details>
+
+<details class="q"><summary>I'm not getting my coach's announcements</summary><div class="a">
+<p>Turn on <strong>Team Updates</strong> in <strong>Settings → Team</strong>, and allow notifications
+for Gamut when your iPhone asks. Announcements and notes also show on your Social tab.</p>
+</div></details>
+
+<details class="q"><summary>What happens if I leave, or the team's plan ends?</summary><div class="a">
+<p>Your access through the team ends, you're told in the app, and your coaches stop seeing your
+training. Everything you logged stays in your account, and you can carry on with your own
+subscription.</p>
+</div></details>
+</section>
+
+<section class="faq-group">
+<p class="kicker">Teams</p>
+<h2 id="coaches">For coaches</h2>
+
+<details class="q"><summary>How do I set up my team?</summary><div class="a">
+<ol>
+  <li>Install Gamut on your iPhone (iOS 26 or later).</li>
+  <li>Choose <strong>With a team</strong>, then <strong>I'm a coach</strong>, and sign up with the
+  email address your team plan was bought with. The plan appears by itself. Used a different email,
+  or Apple's Hide My Email? Enter the claim code from your purchase instead.</li>
+  <li>Name your team and set its sport and season. Your players' programs are built around them.</li>
+</ol>
+</div></details>
+
+<details class="q"><summary>How do I add players?</summary><div class="a">
+<p>Tap the gear on your dashboard to open team settings. Share your <strong>team code</strong>, the
+invite link or the QR code. Players enter it when they join, and their plans start right away. Each
+player uses one spot on your plan; to free one, open the player and tap <strong>Remove from
+Team</strong>. Making a new code stops the old one working; players already on the team stay
+on.</p>
+</div></details>
+
+<details class="q"><summary>How do I add assistant coaches?</summary><div class="a">
+<p>Share the <strong>staff code</strong> from team settings. Your assistant installs Gamut, chooses
+<strong>With a team</strong>, then <strong>I'm a coach</strong>, and enters it under
+<strong>Assistant coach?</strong>. You can have up to three, and they don't use a player spot.</p>
+</div></details>
+
+<details class="q"><summary>What do "Overloaded" and "Underprepared" mean?</summary><div class="a">
+<p>They're the same lines each player's own app uses. <strong>Overloaded</strong> means a jump in
+training load well above that player's usual, or a run of very hard sessions.
+<strong>Underprepared</strong> means they've fallen behind their planned sessions or their load has
+been light. Every Monday you get a weekly report, and you can turn alerts for load spikes, missed
+sessions and roster changes on or off in team settings.</p>
+</div></details>
+
+<details class="q"><summary>Can I train with Gamut myself?</summary><div class="a">
+<p>Yes. Tap <strong>Switch to My Training</strong> to use Gamut as an athlete, and
+<strong>Settings → Switch to Coach View</strong> to come back. Coaches are covered by the team plan
+for this too.</p>
+</div></details>
+
+<details class="q"><summary>How do I change our plan size, update the card or cancel?</summary><div class="a">
+<p>Your plan has a billing page where you sign in with the email address it was paid with. From
+there you can move to a larger size (you pay only the difference), change the card, download
+invoices or cancel. A plan you cancel stays active to the end of the year already paid for. If you
+don't have the billing page's link, write to
+<a href="mailto:support@gamutapp.com?subject=Gamut%20team%20plan">support@gamutapp.com</a> from the
+address you paid with and we'll send it, or make the change for you.</p>
+</div></details>
+
+<details class="q"><summary>How does the money-back guarantee work?</summary><div class="a">
+<p>Within six months of your team's first payment, email
+<a href="mailto:support@gamutapp.com?subject=Gamut%20team%20plan%20refund">support@gamutapp.com</a>
+from the address you paid with. We refund everything paid for that first plan to the way you paid,
+and the plan ends. It covers a team's first plan, not renewals. The details are in the
+<a href="terms.html#subscription">Terms of Use, section 4.5</a>.</p>
+</div></details>
+
+<details class="q"><summary>What happens if I end the team's program?</summary><div class="a">
+<p><strong>End Team Program</strong> in team settings tells every player and assistant, and your plan
+stops covering them; everyone keeps their own history. You can start a new team on the time left on
+your plan. Ending the program, or deleting your account (which also ends it), doesn't cancel your
+plan's billing: cancel that as described above.</p>
+</div></details>
+</section>
+
+<section class="faq-group">
+<h2 id="account">Your account and data</h2>
+
+<details class="q"><summary>I didn't get the confirmation email</summary><div class="a">
+<p>Check your spam or promotions folder for a message from Gamut. On the Log In screen, try signing
+in: if your email isn't confirmed yet, Gamut offers to <strong>Resend Link</strong>. Open the link
+on your iPhone and it brings you back to the app.</p>
+</div></details>
+
+<details class="q"><summary>I forgot my password</summary><div class="a">
+<p>Tap <strong>Log In → Forgot your password?</strong>. You'll get an email with a link. Open it on the
+same device you asked from; for security, the link can only be completed there. To change a
+password you know, use <strong>Settings → Account → Change Password</strong>.</p>
+</div></details>
+
+<details class="q"><summary>How do I start over without losing my account?</summary><div class="a">
+<p><strong>Settings → Data → Clear Training Data</strong> wipes your training history but keeps
+your login, username, friends and subscription. It can't be undone.</p>
+</div></details>
+
+<details class="q"><summary>How do I delete my account?</summary><div class="a">
+<p>Open <strong>Settings</strong> (the gear on the Profile tab) and scroll to the bottom:
+<strong>Account → Delete My Account</strong>. Coaches find it at the bottom of team settings. It
+permanently removes your account, your email address and every workout, set and record in one go,
+with no recovery and no grace period. It doesn't cancel an Apple subscription; cancel that in your
+Apple ID settings.</p>
+</div></details>
+
+<details class="q"><summary>What happens when I sign out?</summary><div class="a">
+<p>Gamut saves anything not yet synced, then clears your data from the phone, and you're back at the
+start. Sign in again and everything comes back from your account. If you're offline with unsynced
+changes, Gamut asks before throwing them away.</p>
+</div></details>
+</section>
+
+<h2 id="broken">Something looks broken</h2>
+<div class="callout">
+  <p>Email <a href="mailto:support@gamutapp.com?subject=Something%20looks%20broken">support@gamutapp.com</a>
+  with what you were doing, what you expected and what happened. A screenshot helps more than
+  anything else.</p>
+</div>
+
+  </article>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="container"><div class="links">
+    <span>© 2026 Gamut</span>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>
+  </div></div>
 </footer>
 
-</div>
+<script src="docs.js"></script>
 </body>
 </html>

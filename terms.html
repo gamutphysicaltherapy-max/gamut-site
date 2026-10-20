@@ -4,71 +4,147 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Use — Gamut</title>
-<meta name="description" content="The agreement covering your use of Gamut, including subscription and safety terms.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="The agreement covering your use of Gamut, including safety, subscriptions and team plans.">
+<meta name="theme-color" content="#3d4b35">
+<link rel="icon" type="image/png" href="img/emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css">
+<!--
+  This page is ALSO the App Store EULA: studio/app-store/scripts/generate-eula.mjs
+  turns everything from the page heading to the site footer into
+  studio/legal-site/eula.txt (minus the contents list). After any edit here,
+  re-run it and re-paste eula.txt into App Store Connect (App Information ->
+  License Agreement). Keep the h1 tag bare (no attributes) and never write
+  either tag's literal markup in a comment: the generator finds the first
+  occurrence of each by exact match.
+  Section 14 carries Apple's minimum EULA terms; don't trim it.
+  The app opens this page, so it must never link to teams.html (3.1.1).
+-->
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="mark">G</div>
-  <div class="mark-text">
-    <span class="wordmark">Gamut</span>
-    <span class="tagline">Automated strength programming</span>
+<header class="topbar">
+  <div class="container">
+    <span class="brand"><span class="emblem" aria-hidden="true"></span><span class="brand-name">Gamut</span></span>
+    <nav class="topnav" aria-label="Documents">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html" aria-current="page">Terms</a>
+    </nav>
   </div>
 </header>
 
+<main id="main">
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Legal</p>
 <h1>Terms of Use</h1>
-<p class="lede">The agreement between you and Gamut, including how the subscription works.</p>
-<p class="updated">Last updated 16 October 2026</p>
+    <p class="lede">The agreement between you and Gamut: how to train with it safely, how subscriptions
+    and team plans work, and what everyone on a team agrees to.</p>
+    <p class="updated">Last updated 19 October 2026</p>
+  </div>
+</section>
+
+<div class="container doc">
+  <nav class="toc-wrap" aria-label="On this page">
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <ol>
+        <li><a href="#service">1. The Service</a></li>
+        <li><a href="#safety">2. Health and safety</a></li>
+        <li><a href="#account">3. Your account</a></li>
+        <li><a href="#subscription">4. Subscriptions and team plans</a></li>
+        <li><a href="#licence">5. What you may do</a></li>
+        <li><a href="#social">6. Friends, teams and conduct</a></li>
+        <li><a href="#your-content">7. Your content</a></li>
+        <li><a href="#our-content">8. Our content</a></li>
+        <li><a href="#availability">9. Availability</a></li>
+        <li><a href="#warranties">10. Warranties</a></li>
+        <li><a href="#liability">11. Liability</a></li>
+        <li><a href="#termination">12. Termination</a></li>
+        <li><a href="#law">13. Governing law</a></li>
+        <li><a href="#apple">14. Apple</a></li>
+        <li><a href="#changes">15. Changes</a></li>
+        <li><a href="#contact">16. Contact</a></li>
+      </ol>
+    </details>
+  </nav>
+
+  <article class="prose">
 
 <p>These Terms of Use ("Terms") are a legal agreement between you and the developer of the Gamut
-app ("Gamut", "we", "us") covering your use of the Gamut iOS application and this website
-(together, the "Service"). By downloading, accessing or using the Service you agree to them. If you
-do not agree, do not use the Service.</p>
+app ("Gamut", "we", "us") covering your use of the Gamut iOS application, its Apple Watch app and
+widgets, and this website (together, the "Service"). By downloading, accessing or using the Service
+you agree to them. If you do not agree, do not use the Service.</p>
 
-<div class="callout">
-  <p><strong>Read section 2 before you train.</strong> Gamut prescribes resistance training loads,
-  including heavy compound lifts. It is not medical advice and it cannot see you. You are
-  responsible for training safely and within your own limits.</p>
+<div class="callout key">
+  <h3>In plain words</h3>
+  <ul>
+    <li>Gamut writes your training. It is not a doctor, and it cannot see you lift. You decide what is
+    safe for you each day (section 2).</li>
+    <li>On your own, you pay through Apple, and you cancel in your Apple ID settings (section 4).</li>
+    <li>On a team, your coach's team plan covers you. Team plans are bought by a coach, school or club,
+    not in the app (section 4.5).</li>
+    <li>Your training data is yours. We don't sell it and we don't train models on it (section 7).</li>
+  </ul>
+  <p>This summary is here to help you read. The numbered sections below are the agreement.</p>
 </div>
 
-<h2>1. The Service</h2>
+<div class="callout warn">
+  <p><strong>Read section 2 before you train.</strong> Gamut prescribes resistance training loads,
+  including heavy compound lifts, jumps and sprints. It is not medical advice and it cannot see you.
+  You are responsible for training safely and within your own limits.</p>
+</div>
+
+<h2 id="service">1. The Service</h2>
 <p>Gamut generates day-by-day strength and conditioning programs based on the profile you provide
-and the sets you log. Programming decisions are made by a combination of deterministic training
+and the sets you log, and, for teams, lets a team's coaches follow the training their players
+choose to share. Programming decisions are made by a combination of deterministic training
 mathematics and an automated exercise-selection model. Gamut is a software tool. It is not a coach,
 a trainer, a physical therapist or a physician, and no professional relationship is created by your
 use of it.</p>
 <p>You must be at least 16 years old to create an account, or 13 and using the Service with the
-consent and supervision of a parent, guardian or qualified coach.</p>
+consent and supervision of a parent, guardian or qualified coach. The Service is not for anyone
+under 13.</p>
 
-<h2>2. Health, safety and assumption of risk</h2>
-<p><strong>Resistance training carries an inherent risk of injury, including serious injury.</strong>
-By using the Service you acknowledge and agree that:</p>
+<h2 id="safety">2. Health, safety and assumption of risk</h2>
+<p><strong>Resistance training, jumping and sprinting carry an inherent risk of injury, including
+serious injury.</strong> By using the Service you acknowledge and agree that:</p>
 <ul>
   <li>You should consult a physician before beginning any new exercise program, particularly if you
   have a pre-existing injury or medical condition, are pregnant, or have been sedentary.</li>
-  <li>Weights, percentages, set counts and rest periods produced by Gamut are <em>suggestions
-  derived from the information you supplied</em>. They are estimates. Gamut cannot observe your
-  technique, your equipment, your fatigue or your environment.</li>
+  <li>Weights, percentages, set counts, jump and sprint counts and rest periods produced by Gamut are
+  <em>suggestions derived from the information you supplied</em>. They are estimates. Gamut cannot
+  observe your technique, your equipment, your fatigue or your environment.</li>
   <li>You are solely responsible for judging whether a prescribed load or movement is appropriate
   for you on a given day, for using correct technique, for using a spotter or safety equipment
   where appropriate, and for stopping when something hurts.</li>
-  <li>Recovery figures derived from Apple Health are estimates from consumer sensors. They are not
-  a medical device, not a diagnosis, and must not be used to detect, treat or monitor any medical
-  condition.</li>
+  <li>Recording an injury or limitation in the app asks Gamut to leave certain movement types out
+  of your workouts. It is not treatment and it does not make a movement safe for you; follow the
+  advice of the clinician treating you.</li>
+  <li>Recovery, readiness, strain and stress figures derived from Apple Health are estimates from
+  consumer sensors. They are not a medical device, not a diagnosis, and must not be used to detect,
+  treat or monitor any medical condition.</li>
+  <li>A coach following your training through Gamut is not supervising your sessions through the
+  Service. Gamut does not supervise anyone.</li>
   <li>You assume all risk arising from your use of the Service and from any physical activity you
   undertake in connection with it.</li>
 </ul>
 <p>Nothing in the Service is medical advice. If you experience chest pain, dizziness, shortness of
 breath or any symptom that concerns you, stop immediately and seek medical attention.</p>
 
-<h2>3. Your account</h2>
+<h2 id="account">3. Your account</h2>
 <p>You are responsible for keeping your password confidential and for all activity under your
-account. Provide accurate information — the Service's output depends directly on it. Tell us
-promptly if you believe your account has been accessed without authorisation.</p>
+account, including one opened through Sign in with Apple or Google. An account is for one person;
+do not share it. Provide accurate information, including your age, because the Service's output
+depends directly on it. Tell us promptly if you believe your account has been accessed without
+authorisation.</p>
 
-<h2>4. Free trial and subscription</h2>
+<h2 id="subscription">4. Free trial, subscription and team plans</h2>
 
 <h3>4.1 Free trial</h3>
 <p>New subscribers may be offered a <strong>14-day free trial</strong>, started from the
@@ -77,7 +153,8 @@ an Apple ID with a valid payment method, but <strong>nothing is charged during t
 When the trial ends, the subscription you chose begins and is charged automatically unless you
 cancel it at least <strong>24 hours before the trial ends</strong>. Apple allows one introductory
 offer per Apple ID for Gamut's subscriptions; if you have used it before, the subscription begins
-without a trial. A subscription (or trial) is required to use the Service.</p>
+without a trial. A subscription (or trial), or a place on a team covered by a team plan (section
+4.5), is required to use the Service.</p>
 
 <h3>4.2 Subscription terms</h3>
 <p>Gamut is offered as an auto-renewing subscription, available in monthly and yearly terms. The
@@ -90,14 +167,17 @@ current price and billing period are shown in the app before you confirm, in you
   <li>Your account is charged for renewal within 24 hours prior to the end of the current
   period.</li>
   <li>You can manage or cancel the subscription in your Apple ID account settings after purchase.
-  <strong>Deleting the app does not cancel the subscription.</strong></li>
+  <strong>Deleting the app, or deleting your Gamut account, does not cancel the
+  subscription.</strong></li>
   <li>Cancelling stops future renewals. It does not refund the period you are currently in, and
   access continues until that period ends.</li>
+  <li>A subscription is used by the Gamut account that bought it and cannot be shared with or moved
+  to another Gamut account.</li>
 </ul>
 
 <h3>4.3 Payments and refunds</h3>
-<p>All purchases are processed by Apple, not by us. We never receive your payment details. Refunds
-are governed by Apple's policies and are requested from Apple directly at
+<p>All purchases made in the app are processed by Apple, not by us. We never receive your payment
+details. Refunds are governed by Apple's policies and are requested from Apple directly at
 <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. We cannot issue refunds
 for purchases made through the App Store.</p>
 
@@ -106,18 +186,49 @@ for purchases made through the App Store.</p>
 after Apple has notified you and, where required, obtained your consent to continue.</p>
 
 <h3>4.5 Team plans</h3>
-<p>A coach, school, club or other organization may hold a <strong>team plan</strong>, arranged
-directly with us rather than through Apple. A team plan covers the Service for the players on that
-team's roster (up to the number of players the plan includes) and for up to three assistant
-coaches. Its price, billing period, renewal, cancellation and refunds are agreed between us and the
-plan's purchaser and are not handled by Apple; sections 4.1 to 4.4 do not apply to it. If you are a
-player, your access through a team lasts while you are on the roster and the team's plan is active:
-if the plan ends, the coach ends the team, or you are removed or leave, your access through the
-team ends, your training history stays yours, and you may continue with your own subscription. A
-team plan does not cancel, pause or refund a subscription you hold yourself through Apple; manage
-that in your Apple ID settings.</p>
+<p>A coach, school, club or other organization (the "purchaser") may buy a <strong>team
+plan</strong>. Team plans are bought from us outside the app, not through Apple, and sections 4.1
+to 4.4 do not apply to them. Team plan payments are processed by Stripe and sold through Link,
+Stripe's payment service, which acts as the seller of record and calculates and collects any sales
+tax. If you buy a team plan for an organization, you confirm that you are authorised to do so on
+its behalf.</p>
+<ul>
+  <li><strong>What it covers.</strong> The Service for the players on one team's roster, up to the
+  number of players the plan includes, plus the head coach and up to three assistant coaches, who
+  do not use a player's place. A place opens again when a player leaves or is removed. Places may
+  not be sold or given to people outside the purchaser's own teams.</li>
+  <li><strong>Billing and renewal.</strong> A team plan is billed once a year, in advance, and
+  <strong>renews automatically</strong> each year for the same plan size unless it is cancelled
+  before the renewal date. The price, plan size and renewal date are shown at checkout and on the
+  purchaser's receipts. If the price for a plan size changes, the new price applies only from the
+  next renewal after we tell the purchaser.</li>
+  <li><strong>Changing size.</strong> Moving to a larger plan takes effect straight away, and the
+  purchaser pays only the prorated difference for the rest of the paid year. Moving to a smaller
+  plan takes effect at the next renewal.</li>
+  <li><strong>Cancelling.</strong> The purchaser may cancel at any time. Cancelling stops the next
+  renewal; the plan stays active until the end of the year already paid for. Except under the
+  guarantee below, or where the law requires, payments for a year already begun are not
+  refunded.</li>
+  <li><strong>6-month money-back guarantee.</strong> For a team's first team plan, the purchaser may
+  ask for a full refund of everything paid for it, for any reason, by emailing us from the address
+  used to pay within six months of the first payment. We refund to the original payment method,
+  and the plan ends when the refund is made. The guarantee does not apply to a renewal, or to a
+  later plan for the same team or organization.</li>
+  <li><strong>Free trial team plans.</strong> We may invite a coach to try a team plan free for a
+  stated number of days. It ends by itself at the end of the trial, nothing is charged, and each
+  coach may have one.</li>
+  <li><strong>Missed or disputed payments.</strong> If a payment fails, is disputed or is reversed,
+  we may suspend or end the plan.</li>
+  <li><strong>Ending a team.</strong> If the plan ends, the head coach ends the team's program or
+  deletes their account, or a player leaves or is removed, that player's access through the team
+  ends. Their training history stays theirs, and they may continue with their own subscription.
+  Ending a team's program or deleting the head coach's account does not by itself cancel the
+  plan's billing; cancel the plan as described above.</li>
+</ul>
+<p>A team plan does not cancel, pause or refund a subscription you hold yourself through Apple. If a
+team covers you, manage your own subscription in your Apple ID settings.</p>
 
-<h2>5. What you may and may not do</h2>
+<h2 id="licence">5. What you may and may not do</h2>
 <p>We grant you a personal, non-exclusive, non-transferable, revocable licence to use the Service
 for your own training and, if you are a coach on a team, to follow the training of the players on
 your team. You may not:</p>
@@ -127,22 +238,22 @@ your team. You may not:</p>
   <li>Reverse-engineer, decompile or attempt to derive the source code of the app, except where
   that restriction is prohibited by law;</li>
   <li>Access the Service by automated means, or attempt to circumvent authentication, generation
-  limits or the subscription requirement;</li>
+  limits, team codes or the subscription requirement;</li>
   <li>Use the Service to build a competing product, or to train a machine-learning model;</li>
   <li>Interfere with the Service's operation or attempt to gain access to another user's
   account.</li>
 </ul>
 
-<h2>6. Social features and other users</h2>
+<h2 id="social">6. Social features, teams and other users</h2>
 <p>Gamut includes optional social features: adding friends by exact username or through contact
-matching, sending a "High Five" on a friend's completed session, and challenging a friend to a
-streak-race. None of this is required to use the Service, and it stays off until you claim a
-username.</p>
+matching, sending a "High Five" on a friend's or teammate's completed session, challenging a friend
+to a streak race, and the leaderboard. None of this is required to use the Service, and the
+friends features stay off until you claim a username.</p>
 <p>If you use these features:</p>
 <ul>
   <li>You are responsible for your own conduct toward other users, including the username and
-  display name you choose. You may not impersonate another person or brand, or choose a username
-  that is abusive, harassing or otherwise objectionable.</li>
+  display name you choose. You may not impersonate another person or brand, or choose a name that
+  is abusive, harassing or otherwise objectionable.</li>
   <li>You may not harass, threaten, stalk or send unlawful or abusive content to another user
   through the Service.</li>
   <li>You may <strong>block</strong> any user from your own account, which stops them from seeing
@@ -152,71 +263,82 @@ username.</p>
   an account, at our discretion and without prior notice, including reclaiming a username that
   violates this section.</li>
   <li>A friend you accept can see the training data described in our
-  <a href="privacy.html">Privacy Policy</a>'s "Friends" section — never anything from Apple Health,
+  <a href="privacy.html">Privacy Policy</a>'s "Friends" section, never anything from Apple Health,
   and never a raw body-weight number. Once you claim a username, your username, display name,
   profile picture and ranked figures also appear on the global leaderboard, which every user can
   see (see the Privacy Policy's "Global leaderboard" section). We are not responsible for what a
   friend does with information you choose to share with them, or for another user's conduct.</li>
 </ul>
 <p><strong>Teams.</strong> A player joins a team only with a code from its coach and only after
-agreeing to share their training with that team's coaches; what coaches can see is described in
-the Privacy Policy's "Teams" section and never includes anything from Apple Health. A player may
-turn sharing off or leave the team at any time. If you are a coach, you may use what your players
-share only to coach them; you may not copy it out of the Service for any other purpose, share it
-with anyone outside the team's coaching staff, or use it to pressure a player into sharing more
-than they chose to. Coaches are responsible for giving team codes only to their own players and
-for obtaining any consent their school, club or local law requires before players join. Gamut is
-for people aged 13 and over.</p>
+agreeing to share their training with that team's coaches; what coaches and teammates can see is
+described in the Privacy Policy's "Teams" section and never includes anything from Apple Health. A
+player may turn sharing off, hide from teammates or leave the team at any time.</p>
+<p>If you are a coach:</p>
+<ul>
+  <li>You may use what your players share only to coach them. You may not copy it out of the Service
+  for any other purpose, share it with anyone outside the team's coaching staff, or use it to
+  pressure a player into sharing more than they chose to.</li>
+  <li>Announcements you post are seen by your whole team. They must be appropriate for players as
+  young as 13, and the conduct rules above apply to them. We may remove an announcement that breaks
+  them.</li>
+  <li>You are responsible for giving team codes only to your own players and staff, for removing
+  people who should no longer be on the team, and for obtaining any consent your school, club or
+  local law requires before players join.</li>
+  <li>Settings you choose for your team, such as its sport, season, game days and development plans,
+  change how Gamut programs your players. Choose them carefully; the safety terms in section 2 still
+  apply to every player.</li>
+</ul>
 
-<h2>7. Your content</h2>
-<p>Your training data is yours. You grant us only the licence needed to operate the Service —
-storing it, syncing it between your devices, and processing it to generate your programming. We do
-not sell it and we do not use it to train models. See our
-<a href="privacy.html">Privacy Policy</a> for detail.</p>
+<h2 id="your-content">7. Your content</h2>
+<p>Your training data is yours. You grant us only the licence needed to operate the Service:
+storing it, syncing it between your devices, processing it to generate your programming, and
+showing it to the people you choose to share it with. We do not sell it and we do not use it to
+train models. See our <a href="privacy.html">Privacy Policy</a> for detail.</p>
 
-<h2>8. Our content</h2>
+<h2 id="our-content">8. Our content</h2>
 <p>The Service, including its software, design, text and the Gamut name and logo, is owned by us
 and protected by intellectual property law. These Terms grant you no rights in it beyond the
 licence in section 5.</p>
 
-<h2>9. Availability</h2>
+<h2 id="availability">9. Availability</h2>
 <p>We aim to keep the Service running but do not guarantee it will be uninterrupted or error-free.
 We may modify, suspend or discontinue features at any time. If we discontinue the Service entirely
 while you hold a paid subscription, we will give reasonable notice and you may seek a pro-rata
-refund from Apple.</p>
+refund from Apple. If we discontinue it while a team plan is active, we will refund the purchaser
+the unused part of the year paid for.</p>
 
-<h2>10. Disclaimer of warranties</h2>
+<h2 id="warranties">10. Disclaimer of warranties</h2>
 <p>To the fullest extent permitted by law, the Service is provided <strong>"as is" and "as
 available"</strong>, without warranty of any kind, express or implied, including any implied
 warranty of merchantability, fitness for a particular purpose or non-infringement. We do not
 warrant that the Service will meet your training goals, that its recommendations are suitable for
 you, or that it will be error-free.</p>
 
-<h2>11. Limitation of liability</h2>
+<h2 id="liability">11. Limitation of liability</h2>
 <p>To the fullest extent permitted by law, we will not be liable for any indirect, incidental,
 special, consequential or punitive damages, or for any loss of data, profits or goodwill, arising
-out of your use of the Service — including any injury sustained while performing an exercise it
+out of your use of the Service, including any injury sustained while performing an exercise it
 suggested.</p>
 <p>Our total aggregate liability arising out of or relating to the Service will not exceed the
-greater of (a) the amount you paid us in the twelve months before the claim, or (b) fifty US
-dollars.</p>
+greater of (a) the amount you (or, for a team plan, its purchaser) paid for the Service in the
+twelve months before the claim, or (b) fifty US dollars.</p>
 <p>Some jurisdictions do not allow the exclusion of certain warranties or the limitation of
 liability for personal injury, so some of the above may not apply to you. Nothing in these Terms
 limits liability for death or personal injury caused by negligence, for fraud, or for anything else
 that cannot lawfully be limited.</p>
 
-<h2>12. Termination</h2>
+<h2 id="termination">12. Termination</h2>
 <p>You may stop using the Service at any time and delete your account from within the app. We may
 suspend or terminate your access if you breach these Terms. Sections 2, 6, 7, 8, 10, 11 and 13
 survive termination.</p>
 
-<h2>13. Governing law</h2>
+<h2 id="law">13. Governing law</h2>
 <p>These Terms are governed by the laws of the State of Delaware, United States, without regard to
 its conflict-of-laws rules. You and we agree to the exclusive jurisdiction of the state and federal
 courts located in Delaware, except where the law of your country of residence gives you the right
 to bring proceedings locally.</p>
 
-<h2>14. Apple</h2>
+<h2 id="apple">14. Apple</h2>
 <p>This section applies because you obtained the app from Apple's App Store, and it forms part of
 these Terms.</p>
 <ul>
@@ -255,21 +377,29 @@ these Terms.</p>
   directed to us at <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>.</li>
 </ul>
 
-<h2>15. Changes to these Terms</h2>
+<h2 id="changes">15. Changes to these Terms</h2>
 <p>We may update these Terms. The date at the top will change, and material changes will be
-notified in the app before they take effect. Continuing to use the Service after that constitutes
-acceptance.</p>
+notified in the app before they take effect; material changes to team plan terms will also be
+emailed to the purchaser. Continuing to use the Service after that constitutes acceptance.</p>
 
-<h2>16. Contact</h2>
+<h2 id="contact">16. Contact</h2>
 <p><a href="mailto:support@gamutapp.com">support@gamutapp.com</a></p>
 
-<footer class="pagefoot">
-  <span>© 2026 Gamut</span>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="terms.html">Terms of Use</a>
-  <a href="support.html">Support</a>
+  </article>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="container"><div class="links">
+    <span>© 2026 Gamut</span>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>
+  </div></div>
 </footer>
 
-</div>
+<script src="docs.js"></script>
 </body>
 </html>
