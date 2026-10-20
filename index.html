@@ -3,72 +3,209 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gamut — Automated strength programming</title>
-<meta name="description" content="Gamut builds a new strength and conditioning workout for you every training day, and adjusts it as you log your sets.">
-<link rel="stylesheet" href="style.css">
+<title>Gamut — Strength and speed training, built for you</title>
+<meta name="description" content="Gamut writes your strength and speed training every day, around your sport, your season and how you recovered. Made by a Doctor of Physical Therapy who is also a strength coach.">
+<meta property="og:title" content="Gamut: a new workout, built for you, every day">
+<meta property="og:description" content="Strength and speed training around your sport, your season and your recovery.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3d4b35">
+<link rel="icon" type="image/png" href="img/emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css">
+<!--
+  The site's front page, for athletes. Kept short on purpose: the offer, why
+  it matters, three things the app does, and a door to Gamut for Teams.
+  Like teams.html: every claim must be true of the shipped app, with no
+  testimonials, user counts or injury claims, and copy in short words.
+  The privacy, terms and support pages link here, and the app opens those,
+  so this page carries no team prices or buy buttons; teams.html does.
+  The App Store link resolves once the app is live (it 404s before that).
+  Screens in img/athlete-*.webp are light-mode captures from
+  studio/app-store/screenshots/light, scaled to 660px wide.
+-->
+<style>
+  .topnav a.nav-cta { color: var(--hero-deep); background: var(--on-hero); font-weight: 600; }
+  .topnav a.nav-cta:hover { color: var(--hero-deep); background: #ffffff; }
+  .phone {
+    position: relative; border-radius: 42px; padding: 9px; background: #0f130b;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 40px 80px -30px rgba(0, 0, 0, 0.6), 0 18px 40px -20px rgba(var(--shadow), 0.5);
+  }
+  .phone img { display: block; width: 100%; height: auto; border-radius: 34px; aspect-ratio: 660 / 1434; background: #f2f5ef; }
+
+  .home-hero .container { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 0; }
+  .home-hero .copy { padding-bottom: 64px; }
+  .home-hero .lede { max-width: 30em; }
+  .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 4px 0 14px; }
+  .text-link { font-family: var(--display); font-weight: 500; color: var(--on-hero); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  .text-link:hover { color: #ffffff; }
+  .small { font-size: 14.5px; color: var(--on-hero-muted); margin: 0; }
+  .cred { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 14px; line-height: 1.4; color: var(--on-hero-muted); }
+  .creds { display: flex; gap: 5px; flex: none; }
+  .creds span { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 0.06em; background: var(--on-hero); color: var(--hero-deep); padding: 3px 6px; border-radius: 5px; }
+  .visual { position: relative; height: 560px; align-self: end; }
+  .visual .phone { position: absolute; }
+  .visual .front { width: 262px; right: 70px; top: 0; z-index: 2; }
+  .visual .back { width: 226px; right: 268px; top: 92px; transform: rotate(-5deg); opacity: 0.94; }
+  .visual .phone, .visual .phone img { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+  section.band { padding: 84px 0; }
+  .kicker { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .band h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.06; font-weight: 700; margin: 0 0 14px; }
+  .pains { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
+  .pains li { padding: 20px 0 0; border-top: 1px solid var(--border); font-family: var(--display); font-size: 22px; line-height: 1.3; font-weight: 500; }
+  .pains li span { display: block; font-size: 14px; font-weight: 600; color: var(--ember); margin-bottom: 8px; letter-spacing: 0.06em; }
+  .turn { margin: 30px 0 0; font-family: var(--display); font-size: 24px; font-weight: 600; }
+
+  .how { background: var(--bg-alt); }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 34px; }
+  .feature { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
+  .feature .shot { height: 300px; overflow: hidden; padding: 28px 40px 0; background: radial-gradient(260px 200px at 50% 100%, var(--accent-soft), transparent 70%); }
+  .feature .shot .phone { border-radius: 34px 34px 0 0; padding: 7px 7px 0; }
+  .feature .shot .phone img { border-radius: 28px 28px 0 0; }
+  .feature .body { padding: 22px 24px 24px; border-top: 1px solid var(--border); }
+  .feature h3 { font-size: 22px; line-height: 1.2; margin: 0 0 8px; font-weight: 700; }
+  .feature p { margin: 0; color: var(--muted); font-size: 16px; }
+  .privacy-note { margin: 22px 0 0; font-size: 15px; color: var(--muted); }
+
+  .coach { padding: 0 0 84px; background: var(--bg-alt); }
+  .coach-box {
+    display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: center;
+    border-radius: var(--radius-lg); padding: 32px 34px; color: var(--on-hero);
+    background: radial-gradient(520px 260px at 0% 0%, rgba(181, 193, 170, 0.22), transparent 70%), var(--hero);
+    box-shadow: 0 30px 60px -36px rgba(var(--shadow), 0.7);
+  }
+  .coach-box .kicker { color: var(--on-hero-muted); }
+  .coach-box h2 { font-size: clamp(26px, 3vw, 34px); line-height: 1.12; margin: 0 0 8px; font-weight: 700; }
+  .coach-box p { margin: 0; color: var(--on-hero-muted); font-size: 17px; max-width: 34em; }
+  footer.site { padding-top: 28px; }
+
+  @media (max-width: 980px) {
+    .home-hero .container { grid-template-columns: 1fr; }
+    .visual { display: none; }
+    .home-hero .copy { padding-bottom: 52px; }
+    .pains { grid-template-columns: 1fr; }
+    .pains li { padding: 16px 0; font-size: 20px; }
+    .features { grid-template-columns: 1fr; gap: 14px; }
+    .feature { flex-direction: row; }
+    .feature .shot { flex: none; width: 150px; height: auto; max-height: 230px; padding: 18px 16px 0; }
+    .feature .body { border-top: none; border-left: 1px solid var(--border); align-self: center; }
+    .coach-box { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .home-hero .container { padding-top: 32px; }
+    .ctas .btn { width: 100%; }
+    section.band { padding: 56px 0; }
+    .turn { font-size: 21px; }
+    .feature .shot { width: 112px; padding: 14px 10px 0; max-height: 190px; }
+    .feature .shot .phone { border-radius: 22px 22px 0 0; padding: 4px 4px 0; }
+    .feature .shot .phone img { border-radius: 18px 18px 0 0; }
+    .feature .body { padding: 16px; }
+    .feature h3 { font-size: 18px; }
+    .feature p { font-size: 15px; }
+    .coach { padding-bottom: 56px; }
+    .coach-box { padding: 24px 20px; }
+    .coach-box .btn { width: 100%; }
+  }
+</style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="mark">G</div>
-  <div class="mark-text">
-    <span class="wordmark">Gamut</span>
-    <span class="tagline">Automated strength programming</span>
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Gamut home"><span class="emblem" aria-hidden="true"></span><span class="brand-name">Gamut</span></a>
+    <nav class="topnav" aria-label="Site">
+      <a href="support.html">Support</a>
+      <a class="nav-cta" href="teams.html">For Teams <span aria-hidden="true">→</span></a>
+    </nav>
   </div>
 </header>
 
-<h1>A new workout, built for you, every training day.</h1>
-<p class="lede">Gamut is a strength and conditioning app that writes your program day by day —
-periodized around your sport's season, loaded off your own logged sets, and eased back when your
-recovery says to.</p>
+<main id="main">
 
-<h2>What it does</h2>
-<ul>
-  <li><strong>Programs the whole block.</strong> Four, six or eight weeks of undulating
-  periodization, with deloads scheduled where they belong and intensity that climbs across each
-  wave.</li>
-  <li><strong>Loads off your real numbers.</strong> Estimated one-rep maxes averaged across five
-  formulas from the sets you actually logged, with a safety factor applied before anything is
-  prescribed.</li>
-  <li><strong>Follows your season.</strong> Track several sports at once; block length and emphasis
-  shift as you move between off-season, pre-season and in-season.</li>
-  <li><strong>Reads your recovery.</strong> Optionally connects to Apple Health for heart rate
-  variability, resting heart rate and sleep, and eases the day's loads when your markers are
-  down.</li>
-  <li><strong>Designed by a clinician.</strong> Built by a Doctor of Physical Therapy who is also a
-  Certified Strength and Conditioning Specialist.</li>
-</ul>
+<section class="hero home-hero" aria-labelledby="title">
+  <div class="container">
+    <div class="copy">
+      <p class="eyebrow">Strength and speed training for athletes</p>
+      <h1 id="title">A new workout, built for you, <em>every day.</em></h1>
+      <p class="lede">Gamut writes your training around your sport, your season and how you recovered
+      last night. Log your sets, and tomorrow adjusts.</p>
+      <div class="ctas">
+        <a class="btn btn-light" href="https://apps.apple.com/app/id6804510741">Download on the App Store <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="teams.html">Coaching a team?</a>
+      </div>
+      <p class="small">For iPhone. 14 days free for new subscribers.</p>
+      <p class="cred"><span class="creds"><span>DPT</span><span>CSCS</span></span><span>Made by a Doctor of Physical Therapy who is also a strength coach.</span></p>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="phone back"><img src="img/athlete-workout.webp" alt="" width="660" height="1434"></div>
+      <div class="phone front"><img src="img/athlete-home.webp" alt="" width="660" height="1434" fetchpriority="high"></div>
+    </div>
+  </div>
+</section>
 
-<div class="callout">
-  <p><strong>14 days free.</strong> New subscribers can try Gamut free for 14 days through the App
-  Store. After that it is an auto-renewing monthly or yearly subscription, unless you cancel at least
-  24 hours before the trial ends. Players on a team are covered by their team's plan.</p>
-</div>
+<section class="band" aria-labelledby="why-title">
+  <div class="container">
+    <p class="kicker">Why it matters</p>
+    <h2 id="why-title">A template doesn't know you.</h2>
+    <ul class="pains">
+      <li><span>01</span>The same plan for everyone, when no two athletes lift the same.</li>
+      <li><span>02</span>Your season changes. Most programs don't.</li>
+      <li><span>03</span>Some days you're fresh. Some days you're not. Paper can't tell.</li>
+    </ul>
+    <p class="turn">Gamut can. Every workout is built for you, for that day.</p>
+  </div>
+</section>
 
-<h2>Privacy, briefly</h2>
-<p>No advertising. No analytics SDK. No trackers. Apple Health data is read on your device and
-stays there — apart from a same-day weigh-in, which is added to your weight log. Your account and training history can be deleted permanently from inside the app,
-in one tap. The full detail is in the <a href="privacy.html">Privacy Policy</a>.</p>
+<section class="band how" aria-labelledby="how-title">
+  <div class="container">
+    <p class="kicker">How it works</p>
+    <h2 id="how-title">Three things a template can't do.</h2>
+    <div class="features">
+      <article class="feature">
+        <div class="shot"><div class="phone"><img src="img/athlete-workout.webp" alt="A Back Squat in Gamut: three warm-up sets, then five sets of three at 325 pounds." width="660" height="1434" loading="lazy"></div></div>
+        <div class="body"><h3>Your numbers, every set.</h3><p>Weights come from the sets you log, with a warm-up built in. Rate how hard it felt, and the next day adjusts.</p></div>
+      </article>
+      <article class="feature">
+        <div class="shot"><div class="phone"><img src="img/season-plan.webp" alt="A season plan in Gamut: blocks of training laid over a sport's season." width="660" height="1434" loading="lazy"></div></div>
+        <div class="body"><h3>Your season, planned.</h3><p>Build in the off-season. Peak before games start. Hold your strength in season, with lighter weeks to rest.</p></div>
+      </article>
+      <article class="feature">
+        <div class="shot"><div class="phone"><img src="img/athlete-recovery.webp" alt="Gamut's Recovery page: strain, recovery and sleep rings with coaching." width="660" height="1434" loading="lazy"></div></div>
+        <div class="body"><h3>Your recovery, read.</h3><p>Connect Apple Health, and the day gets lighter when your sleep and heart rate say you need it.</p></div>
+      </article>
+    </div>
+    <p class="privacy-note">No ads. No trackers. Apple Health data stays on your phone. <a href="privacy.html">Read our privacy policy</a>.</p>
+  </div>
+</section>
 
-<h2>Documents</h2>
-<ul>
-  <li><a href="privacy.html">Privacy Policy</a></li>
-  <li><a href="terms.html">Terms of Use</a></li>
-  <li><a href="support.html">Support</a></li>
-</ul>
+<section class="coach" aria-labelledby="coach-title">
+  <div class="container">
+    <div class="coach-box">
+      <div>
+        <p class="kicker">For coaches</p>
+        <h2 id="coach-title">Coaching a team?</h2>
+        <p>Every player gets their own plan. You see who is on track, who is doing too much, and who is falling behind.</p>
+      </div>
+      <a class="btn btn-light" href="teams.html">See Gamut for Teams <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
 
-<h2>Contact</h2>
-<p><a href="mailto:support@gamutapp.com">support@gamutapp.com</a></p>
+</main>
 
-<footer class="pagefoot">
-  <span>© 2026 Gamut</span>
-  <a href="teams.html">Gamut for Teams</a>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="terms.html">Terms of Use</a>
-  <a href="support.html">Support</a>
+<footer class="site">
+  <div class="container"><div class="links">
+    <span>© 2026 Gamut</span>
+    <a href="teams.html">Gamut for Teams</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="mailto:support@gamutapp.com">support@gamutapp.com</a>
+  </div></div>
 </footer>
 
-</div>
 </body>
 </html>
