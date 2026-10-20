@@ -6,9 +6,9 @@
 
    These three pages are opened FROM THE APP (src/lib/legalLinks.ts: the
    paywall and Settings), so they must never link to teams.html, show a team
-   price or carry a buy button (App Store guideline 3.1.1). The top bar and
-   footer link only to each other for that reason, and the brand is not a
-   link to index.html, which links to the plans. */
+   price or carry a buy button (App Store guideline 3.1.1). They link home to
+   index.html (the brand, "Home" in the top bar and the footer), which is the
+   site's front page and carries no prices; teams.html is reached from there. */
 :root {
   --bg: #f8fbf8;
   --bg-alt: #eef3ea;
@@ -80,7 +80,8 @@ strong { font-weight: 650; }
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .topbar .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
-.brand { display: flex; align-items: center; gap: 12px; color: var(--on-hero); }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--on-hero); text-decoration: none; }
+.brand:hover { color: var(--on-hero); }
 .emblem { width: 20px; height: 30px; background: currentColor; -webkit-mask: url(img/emblem.png) center / contain no-repeat; mask: url(img/emblem.png) center / contain no-repeat; }
 .brand-name { font-family: var(--display); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; font-size: 15px; }
 .topnav { display: flex; gap: 4px; }
