@@ -106,6 +106,8 @@
   and never sold, with one exception you should know about: if a body-weight reading from Apple
   Health is the only weigh-in for today, it is added to your Gamut weight log, which is saved to
   your account like a weigh-in you type yourself.</p>
+  <p>Progress photos you add never leave your phone, and nor does your calendar: Gamut can add your
+  training days to it, but never reads the events already there.</p>
   <p>If you join a team, your coaches see a summary of your Gamut training (never anything from
   Apple Health, never your body weight), and you can turn that sharing off at any time. Nothing you
   do in Gamut is sold or used for advertising, and there is no analytics or tracking SDK in the
@@ -144,13 +146,37 @@ out anything you would not want stored.</p>
 completed or skipped, how hard each session felt, your streak, your weigh-ins, your goal
 measurements, and your generated workout history. This is the app's core function; without it
 there is no progression, no estimated maxes and no streak.</p>
+<p><strong>Body measurements (optional).</strong> If you log them, we store your waist, chest, hip,
+upper-arm and thigh measurements and body-fat percentage, with the date of each entry, so they
+survive a new phone. They are shown only to you: never to friends, teammates, coaches or on any
+leaderboard, and never sent to the workout generator.</p>
 
 <h3>Profile picture (optional)</h3>
-<p>If you add a profile picture, Gamut opens your photo library so you can pick one photo; only
-the photo you pick is used, and it is cropped and resized on your phone before upload. It is stored
+<p>If you add a profile picture, Gamut opens your photo library so you can pick one photo, or your
+camera so you can take one; only that photo is used, and it is cropped and resized on your phone
+before upload. It is stored
 at a web address that is not listed anywhere but <strong>can be viewed by anyone who has the
 link</strong>, and it is shown to your friends and teammates and beside your name on leaderboards.
 Replacing or removing it, or deleting your account, removes it.</p>
+
+<h3>Progress photos (optional)</h3>
+<p>If you add progress photos, Gamut takes them with your camera or copies the ones you pick from
+your library into its own storage <strong>on your phone</strong>, resized. They are never uploaded
+to our servers, never shown to anyone else, and never sent to any service provider. They are kept
+for the account that added them, so another person who signs in on the same phone does not see
+them. They are not synced, so they do not move to a new phone, though your phone's own backup may
+include them. You can delete any photo in the app, and Delete My Account removes them all from
+that phone.</p>
+
+<h3>Calendar (optional)</h3>
+<p>If you turn on "Workouts in Your Calendar" in Settings, Gamut asks for calendar access, shows
+you the calendars on your phone (their names and the account each belongs to, such as iCloud,
+Google or Outlook) so you can pick one, and adds your next two weeks of training days to it. Each
+event holds the training focus for that day, a time from your reminder settings, and a link back
+into Gamut. Gamut never reads, changes or removes any event it did not add, and nothing from your
+calendar is sent to our servers. If the calendar you pick syncs to an online account, its provider
+receives those events under its own privacy policy. Turning the feature off, signing out or
+deleting your account removes the events Gamut added.</p>
 
 <h3>Contacts (optional, to find friends)</h3>
 <p>If you choose to use "Find Friends from Your Contacts" on the Social tab, Gamut reads the email
@@ -233,6 +259,18 @@ display name, profile picture and the one figure being ranked (your sessions or 
 moved this week or this month, your streak, or your number of personal records) and your
 position. Nothing else from your profile or history is shown there. People you have blocked, and
 people who have blocked you, do not see each other on it.</p>
+
+<h3>Groups</h3>
+<p>You can join groups that each have their own leaderboard: your state (which you pick; Gamut does
+not read your location), your age group (matched to the age on your profile, so the 13–17 group
+contains only athletes who gave an age from 13 to 17), and groups other athletes create. A group's
+leaderboard shows its members the same things the global leaderboard does, and only members can see
+it. If you create a group, its name is shown to anyone who searches for groups, and we keep that you
+created it. Group names are checked against a list of words that aren't allowed before anyone sees
+them. Anyone can report a group; a report stores who reported it and the reason they chose, and a
+group reported by several people is hidden until we review it. Leaving a group removes you from it
+straight away, and deleting your account removes your memberships and any group you created stays
+without your name attached.</p>
 
 <h2 id="teams">Teams</h2>
 
@@ -336,10 +374,11 @@ handling of your purchase is governed by
   <li><strong>No advertising or tracking identifiers.</strong> Gamut contains no advertising SDK, no
   analytics SDK, no third-party trackers, and does not use the Advertising Identifier (IDFA). It
   never presents the App Tracking Transparency prompt because it has nothing to ask for.</li>
-  <li><strong>No location, microphone or camera access.</strong> The app requests none of these
-  permissions. It uses your photo library only when you choose a profile picture, and your
-  contacts only when you use contact matching. Both are optional, and the app works fully without
-  either.</li>
+  <li><strong>No location or microphone access.</strong> The app requests neither, and your state
+  group is one you pick, not one we work out. It uses your camera and photo library only when you
+  take or choose a profile picture or progress photo, your calendars only if you turn on calendar
+  sync, and your contacts only when you use contact matching. All of these are optional, and the
+  app works fully without any of them.</li>
   <li><strong>Training reminders are local.</strong> Workout reminders, streak alerts, recovery
   tips, the weekly recap and the reminder before a free trial ends are scheduled entirely on your
   device; nothing is sent from a server for these. Only the Friends and Teams notifications
@@ -358,15 +397,17 @@ handling of your purchase is governed by
     <tr><td>Injuries and limitations</td><td>Keeping the movements you asked to avoid out of your workouts</td></tr>
     <tr><td>Logged sets and ratings</td><td>Estimating your one-rep maxes, adjusting future loads, training load, streaks and milestones</td></tr>
     <tr><td>Body weight log</td><td>Charting progress toward a weight-based goal</td></tr>
+    <tr><td>Body measurements</td><td>Showing you your own measurements and how they have changed</td></tr>
     <tr><td>Apple Health readings</td><td>Your on-device recovery score and load adjustment; body weight as described above</td></tr>
     <tr><td>Subscription record</td><td>Confirming whether your free trial or subscription is active</td></tr>
     <tr><td>Username, profile picture, shared stats, friend list</td><td>Letting friends you've added see your progress, send High Fives and race streak challenges; showing you on the global leaderboard</td></tr>
+    <tr><td>Group memberships, and the names of groups you create</td><td>Showing each group's leaderboard to its members; letting others find and join groups</td></tr>
     <tr><td>Hash of your own email address</td><td>Letting another user's contact search find your account, only if you turned on "Findable by Email"</td></tr>
     <tr><td>Team membership and the training summary you share</td><td>Letting your team's coaches follow your training while sharing is on; showing you to teammates; sending the alerts described above</td></tr>
     <tr><td>Team plan record</td><td>Confirming a team's plan is active and how many players it covers; matching a purchase to the coach who made it</td></tr>
     <tr><td>Push notification token</td><td>Delivering friend requests, High Fives, challenge updates, friends' and teammates' record alerts, coaches' team alerts and weekly reports, team announcements and notes, and team notices; waking the app to refresh your widgets</td></tr>
-    <tr><td>Reports</td><td>Reviewing reported conduct and enforcing our Terms</td></tr>
-    <tr><td>Daily generation count</td><td>Limiting how many workouts can be generated per day, to prevent abuse</td></tr>
+    <tr><td>Reports of users and groups</td><td>Reviewing reported conduct and group names, hiding a group reported by several people, and enforcing our Terms</td></tr>
+    <tr><td>Generation count</td><td>Limiting how many workouts can be generated per day, to prevent abuse, and allowing one free workout before a subscription or trial</td></tr>
   </tbody>
 </table>
 </div>
@@ -381,7 +422,8 @@ decisions with legal or similarly significant effects.</p>
 sets, workout history, subscription record and profile picture are stored there, and so are
 messages sent through this website's question form. Database rules
 make each account's rows readable only by that account, except for what you share with friends,
-teammates, on the leaderboard and with your team's coaches as described above. Data is held on
+teammates, on the leaderboards (global and group) and with your team's coaches as described above.
+Progress photos and your calendar are never stored there. Data is held on
 servers in the United States.</p>
 
 <h3>Anthropic</h3>
@@ -393,7 +435,8 @@ week, your unit preference, any active injuries and limitations (the movement ty
 your note), your target intensity for the day, your estimated training maxes, how much you have
 already trained this week, and from your last few sessions the exercise names, your effort ratings
 and any exercises you skipped.</p>
-<p><strong>Your name, email address, body weight and Apple Health data are not sent.</strong> The
+<p><strong>Your name, email address, body weight, body measurements, photos and Apple Health data
+are not sent.</strong> The
 request is not used to train any model.</p>
 
 <h3>Expo</h3>
@@ -442,13 +485,17 @@ in a gym with no signal. Your login session is stored separately in the iOS Keyc
 ordinary app storage, because a session token is a credential rather than app data. It is readable
 after you first unlock your phone following a restart, so the widgets can refresh while the phone
 is locked. The Home Screen and Lock Screen widgets, the Apple Watch app and the rest-timer Live
-Activity read a small summary kept on your phone.</p>
+Activity read a small summary kept on your phone. Progress photos are kept only on your phone, in
+Gamut's own storage. Gamut also keeps a note of which calendar you chose and which events it added,
+so it can update or remove exactly those.</p>
 
 <h2 id="retention">How long we keep it</h2>
 <p>Your training data is kept for as long as your account exists, because its entire value is being
 a long record. Delete your account and it is removed immediately and permanently. The summary your
 coaches see is deleted when you turn sharing off, leave or are removed from the team, or the
-team's program ends. Push tokens not seen for 60 days are deleted. Hashed IP addresses are deleted
+team's program ends. Your group memberships last until you leave the group or delete your
+account; a report of a group is kept while the group exists, or until the reporter deletes their
+account. Push tokens not seen for 60 days are deleted. Hashed IP addresses are deleted
 within two days. Messages sent through this website's question form are deleted after two years,
 or sooner if you ask.</p>
 
@@ -457,11 +504,17 @@ or sooner if you ask.</p>
   <li><strong>Clear Training Data</strong> (in Settings) wipes every workout, set and record while
   keeping your account, username, friends and profile picture. Irreversible.</li>
   <li><strong>Delete My Account</strong> (in Settings) permanently deletes your account, your email
-  address, your profile picture, your username and friends, and every row of training data in one
-  operation. There is no recovery and no grace period. It does not cancel an Apple subscription;
+  address, your profile picture, your username and friends, your group memberships, and every row of
+  training data in one operation, and removes your progress photos and the calendar events Gamut
+  added from that phone. A group you created stays for its other members, without your name
+  attached. There is no recovery and no grace period. It does not cancel an Apple subscription;
   cancel that in your Apple ID settings. If you are a team's head coach, deleting your account also
   ends the team's program, and its players and assistant coaches are told.</li>
-  <li><strong>Remove your profile picture</strong> on the Profile tab, at any time.</li>
+  <li><strong>Remove your profile picture</strong>, delete a progress photo, or edit your body
+  measurements on the Profile tab, at any time.</li>
+  <li><strong>Groups</strong>: leave any group at any time; delete or rename a group you created.</li>
+  <li><strong>Calendar</strong>: turn off "Workouts in Your Calendar" in Settings to remove the events
+  Gamut added.</li>
   <li><strong>Findable by Email</strong> is off unless you turn it on in Settings; turn it off again
   at any time.</li>
   <li><strong>Team sharing and visibility</strong>: in Settings → Team, turn off sharing with your
@@ -471,9 +524,10 @@ or sooner if you ask.</p>
   <li><strong>Disconnect Apple Health</strong>: in the iOS Health app under Sharing → Apps →
   Gamut, turn off the categories you no longer want Gamut to read. Readings already cached on your
   phone are deleted when you sign out, switch accounts or delete the app.</li>
-  <li><strong>Revoke Contacts or Photos access</strong> in iOS Settings → Privacy &amp; Security.
-  Revoking Contacts stops future contact searches from being run by you; it does not undo a match
-  that already happened.</li>
+  <li><strong>Revoke Contacts, Photos, Camera or Calendars access</strong> in iOS Settings → Privacy
+  &amp; Security. Revoking Contacts stops future contact searches from being run by you; it does not
+  undo a match that already happened. Revoking Calendars stops Gamut updating the events it added
+  but does not remove them; turn the feature off first if you want them gone.</li>
   <li><strong>Access and correction</strong>: your profile is editable in the app. For a copy of
   your data in a portable format, email us.</li>
 </ul>
