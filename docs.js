@@ -59,4 +59,74 @@
     }
   }
   onScroll();
+
+  // index.html: the download dock shows while none of the page's own
+  // download buttons ([data-cta]) is on screen, and never before the visitor
+  // has scrolled past the first one.
+  var dock = document.querySelector('.dock');
+  var ctas = document.querySelectorAll('[data-cta]');
+  if (dock && ctas.length && 'IntersectionObserver' in window) {
+    var visible = new Set();
+    var passedFirst = false;
+    var dockIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) visible.add(e.target);
+        else {
+          visible.delete(e.target);
+          if (e.target === ctas[0] && e.boundingClientRect.top < 0) passedFirst = true;
+        }
+        if (e.target === ctas[0] && e.isIntersecting) passedFirst = false;
+      });
+      dock.classList.toggle('show', passedFirst && visible.size === 0);
+    });
+    ctas.forEach(function (el) { dockIo.observe(el); });
+  }
+
+  // form[data-lead]: "have a question?" → public.submit_site_lead.
+  document.querySelectorAll('form[data-lead]').forEach(function (form) {
+    var status = form.querySelector('.lead-status');
+    var button = form.querySelector('button[type="submit"]');
+    var say = function (text, isError) {
+      status.textContent = text;
+      status.classList.toggle('error', !!isError);
+    };
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var data = new FormData(form);
+      var thanks = function () {
+        form.innerHTML = '<div class="lead-done"><div class="tick" aria-hidden="true"></div>' +
+          '<h3>Thanks, we got it.</h3><p>We\'ll reply to your email soon.</p></div>';
+        form.querySelector('h3').setAttribute('tabindex', '-1');
+        form.querySelector('h3').focus();
+      };
+      // The bot trap: pretend it worked and send nothing.
+      if (data.get('website')) { thanks(); return; }
+      var email = String(data.get('email') || '').trim();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      button.disabled = true;
+      say('Sending…');
+      fetch(form.getAttribute('data-endpoint'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: form.getAttribute('data-key') },
+        body: JSON.stringify({
+          p_email: email,
+          p_role: data.get('role') || 'other',
+          p_message: String(data.get('message') || '').trim() || null,
+          p_wants_updates: data.get('updates') === 'on',
+          p_source: form.getAttribute('data-source') || 'site'
+        })
+      })
+        .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
+        .then(function (result) {
+          if (result === 'ok') return thanks();
+          button.disabled = false;
+          if (result === 'invalid') say('That email doesn\'t look right. Check it and try again.', true);
+          else say('Too many messages from here today. Email support@gamutapp.com instead.', true);
+        })
+        .catch(function () {
+          button.disabled = false;
+          say('Couldn\'t send that. Check your connection, or email support@gamutapp.com.', true);
+        });
+    });
+  });
 })();
