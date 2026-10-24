@@ -118,7 +118,13 @@
       })
         .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
         .then(function (result) {
-          if (result === 'ok') return thanks();
+          if (result === 'ok') {
+            // stats.js counts it; the bot trap above never gets here.
+            document.dispatchEvent(new CustomEvent('gamut:lead', {
+              detail: { source: form.getAttribute('data-source') || 'site' }
+            }));
+            return thanks();
+          }
           button.disabled = false;
           if (result === 'invalid') say('That email doesn\'t look right. Check it and try again.', true);
           else say('Too many messages from here today. Email support@gamutapp.com instead.', true);

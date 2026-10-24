@@ -55,7 +55,7 @@
     <p class="lede">What Gamut collects, who can see it, and what never leaves your phone.
     It covers the Gamut iPhone app, its Apple Watch app and widgets, and this website.</p>
     <ul class="meta">
-      <li>Last updated 20 October 2026</li>
+      <li>Last updated 24 October 2026</li>
       <li>No ads. No trackers.</li>
     </ul>
   </div>
@@ -463,13 +463,27 @@ messages. Google's handling of both is governed by
 <p>Hosts this website. See "This website" below.</p>
 
 <h2 id="website">This website</h2>
-<p>This website sets no cookies and runs no analytics, advertising or tracking. It is hosted on
+<p>This website sets no cookies and runs no advertising or third-party tracking. It is hosted on
 GitHub Pages, and its pages load their typeface from Google Fonts; both receive your IP address and
 browser details when you visit, as any web host does, under
 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's
 Privacy Statement</a> and Google's Privacy Policy. The page a coach sees after buying a team plan
 asks our server for the plan's claim code; to stop that being abused, our server keeps a one-way
 hash of the requesting IP address, never the address itself, and deletes it within two days.</p>
+<p>We count visits to this website ourselves, on our own server, to see which pages are read and
+what brings people here. When a page opens, it sends us the page's address (never anything after
+the "?", apart from the utm_ tags in an ad's link), the website you came from, the width of your
+screen and your browser's language. While you are on the page it notes how long you actively read
+it, how far you scrolled, which sections you saw, and whether you tapped a link such as Download
+on the App Store. Our server adds the country your connection comes from and your device type and
+browser (for example "iPhone, Safari"), worked out from what your browser sends. To tell one
+visitor from another for a single day, it makes a one-way hash of your IP address and browser
+details mixed with a random value that is replaced every day; the old value is deleted, so the
+hash can't be traced back to you or linked to another day. Your IP address itself is never stored,
+nothing is stored on your device, and none of this is shared with anyone or linked to a Gamut
+account. Visit records are deleted after two years. To leave yourself out, add
+<code>?notrack=1</code> to any page's address once; the site then remembers, in your browser
+alone, not to count you.</p>
 <p>The question form on the homepage is optional. If you use it, we store the email address you
 enter, whether you said you are an athlete, a parent, a coach or something else, your question if
 you wrote one, and whether you asked for updates. We use it only to reply to you and, if you
@@ -496,7 +510,7 @@ coaches see is deleted when you turn sharing off, leave or are removed from the 
 team's program ends. Your group memberships last until you leave the group or delete your
 account; a report of a group is kept while the group exists, or until the reporter deletes their
 account. Push tokens not seen for 60 days are deleted. Hashed IP addresses are deleted
-within two days. Messages sent through this website's question form are deleted after two years,
+within two days. Records of visits to this website are deleted after two years. Messages sent through this website's question form are deleted after two years,
 or sooner if you ask.</p>
 
 <h2 id="rights">Your choices and rights</h2>
@@ -577,5 +591,6 @@ your data is handled, we will tell you in the app before it takes effect.</p>
 </footer>
 
 <script src="docs.js"></script>
+<script src="stats.js" defer></script>
 </body>
 </html>
