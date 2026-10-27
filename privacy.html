@@ -55,7 +55,7 @@
     <p class="lede">What Gamut collects, who can see it, and what never leaves your phone.
     It covers the Gamut iPhone app, its Apple Watch app and widgets, and this website.</p>
     <ul class="meta">
-      <li>Last updated 24 October 2026</li>
+      <li>Last updated 27 October 2026</li>
       <li>No ads. No trackers.</li>
     </ul>
   </div>
@@ -204,6 +204,13 @@ content-free signal about once an hour that wakes Gamut to refresh the widget on
 store that the device has a widget and when it was last refreshed. This stops on its own a few
 days after you remove the widgets, and the token is removed when you sign out.</p>
 
+<h3>How you heard about Gamut (optional)</h3>
+<p>Setup asks once how you heard about Gamut (for example Instagram, your coach or a friend). You
+can skip it. If you answer, we store your answer with your account, and the few words you type if
+you choose "Somewhere else", to learn which ways of reaching athletes work. It is only ever counted
+together with everyone else's answers, never shown to anyone, never shared and never used for
+advertising. It is deleted with your account.</p>
+
 <h2 id="health">Apple Health data</h2>
 <p>If you choose to connect Apple Health, Gamut reads heart rate, heart rate variability, resting
 heart rate, heart rate recovery, respiratory rate, blood oxygen, sleeping wrist temperature, sleep,
@@ -351,16 +358,23 @@ purchase. We send that record to our server to verify it with Apple's signature,
 product you chose, when your current period (or free trial) ends, the transaction's identifier and
 whether it was a test purchase, so the service can confirm your subscription. A new purchase is
 tagged with your Gamut account's random identifier, which Apple keeps with the purchase, so that a
-subscription unlocks only the account that bought it. We never receive your payment details or
-your Apple ID.</p>
+subscription unlocks only the account that bought it. Apple also tells our server directly, in a
+signed message, whenever that subscription changes: a free trial starting or ending, a renewal,
+automatic renewal being turned off, a refund. Each message carries the product, its price and
+currency, the dates involved and Apple's transaction identifier, and we keep it as a record of the
+subscription, used to keep access correct (a refunded subscription stops working) and to count, in
+total, how many trials become subscriptions. We never receive your payment details or your Apple
+ID.</p>
 
 <h3>Team plans</h3>
 <p>Team plans are bought outside the app through Stripe, and sold through Link, Stripe's payment
 service, which acts as the seller of record and calculates and collects sales tax. At checkout,
 Stripe collects your payment details, email address, billing address and, if you give them, your
 organization's name and tax ID. <strong>We never receive your card or bank details.</strong> Stripe
-sends us the purchaser's email address, which plan was bought, whether it is active and when it
-renews or ends, and Stripe's own identifiers for the customer and the subscription. If we invite a
+sends us the purchaser's email address, which plan was bought and its price, whether it is active
+and when it renews or ends, Stripe's own identifiers for the customer and the subscription, and,
+if the purchase started from this website, the name of the campaign that brought the visitor here
+(described under "This website"). If we invite a
 coach to a free trial team plan, we store the email address the invitation was sent to. Stripe's
 handling of your purchase is governed by
 <a href="https://stripe.com/privacy">Stripe's Privacy Policy</a> and
@@ -399,12 +413,13 @@ handling of your purchase is governed by
     <tr><td>Body weight log</td><td>Charting progress toward a weight-based goal</td></tr>
     <tr><td>Body measurements</td><td>Showing you your own measurements and how they have changed</td></tr>
     <tr><td>Apple Health readings</td><td>Your on-device recovery score and load adjustment; body weight as described above</td></tr>
-    <tr><td>Subscription record</td><td>Confirming whether your free trial or subscription is active</td></tr>
+    <tr><td>Subscription record and Apple's subscription updates</td><td>Confirming whether your free trial or subscription is active; ending access after a refund; counting, in total, trials, renewals and cancellations</td></tr>
+    <tr><td>How you heard about Gamut</td><td>Counting, in total, which ways of reaching athletes work</td></tr>
     <tr><td>Username, profile picture, shared stats, friend list</td><td>Letting friends you've added see your progress, send High Fives and race streak challenges; showing you on the global leaderboard</td></tr>
     <tr><td>Group memberships, and the names of groups you create</td><td>Showing each group's leaderboard to its members; letting others find and join groups</td></tr>
     <tr><td>Hash of your own email address</td><td>Letting another user's contact search find your account, only if you turned on "Findable by Email"</td></tr>
     <tr><td>Team membership and the training summary you share</td><td>Letting your team's coaches follow your training while sharing is on; showing you to teammates; sending the alerts described above</td></tr>
-    <tr><td>Team plan record</td><td>Confirming a team's plan is active and how many players it covers; matching a purchase to the coach who made it</td></tr>
+    <tr><td>Team plan record</td><td>Confirming a team's plan is active and how many players it covers; matching a purchase to the coach who made it; counting, in total, which website campaigns lead to purchases</td></tr>
     <tr><td>Push notification token</td><td>Delivering friend requests, High Fives, challenge updates, friends' and teammates' record alerts, coaches' team alerts and weekly reports, team announcements and notes, and team notices; waking the app to refresh your widgets</td></tr>
     <tr><td>Reports of users and groups</td><td>Reviewing reported conduct and group names, hiding a group reported by several people, and enforcing our Terms</td></tr>
     <tr><td>Generation count</td><td>Limiting how many workouts can be generated per day, to prevent abuse, and allowing one free workout before a subscription or trial</td></tr>
@@ -481,7 +496,13 @@ visitor from another for a single day, it makes a one-way hash of your IP addres
 details mixed with a random value that is replaced every day; the old value is deleted, so the
 hash can't be traced back to you or linked to another day. Your IP address itself is never stored,
 nothing is stored on your device, and none of this is shared with anyone or linked to a Gamut
-account. Visit records are deleted after two years. To leave yourself out, add
+account. Visit records are deleted after two years.</p>
+<p>When you tap a link to the App Store or to a team plan checkout, the link carries the name of
+the campaign that brought you to this website (for example "facebook, fall-coaches"), so Apple's
+and Stripe's reports can tell us which campaigns lead to downloads and purchases. It names the
+campaign, never you, and nothing else about your visit is passed on. Links between this website's
+own pages carry the same campaign tags in their address, which is how the site remembers them
+without storing anything on your device. To leave yourself out, add
 <code>?notrack=1</code> to any page's address once; the site then remembers, in your browser
 alone, not to count you.</p>
 <p>The question form on the homepage is optional. If you use it, we store the email address you
@@ -509,7 +530,9 @@ a long record. Delete your account and it is removed immediately and permanently
 coaches see is deleted when you turn sharing off, leave or are removed from the team, or the
 team's program ends. Your group memberships last until you leave the group or delete your
 account; a report of a group is kept while the group exists, or until the reporter deletes their
-account. Push tokens not seen for 60 days are deleted. Hashed IP addresses are deleted
+account. When you delete your account, Apple's records of your subscription's purchases (product,
+price, dates and Apple's transaction identifier) are kept for our accounts, with the link to your
+account removed. Push tokens not seen for 60 days are deleted. Hashed IP addresses are deleted
 within two days. Records of visits to this website are deleted after two years. Messages sent through this website's question form are deleted after two years,
 or sooner if you ask.</p>
 

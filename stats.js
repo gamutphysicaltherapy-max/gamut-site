@@ -12,10 +12,28 @@
 // ?notrack=1 opts this browser out, so our own visits don't count, and
 // ?notrack=0 opts back in. That flag is the one thing ever stored, and only
 // when asked for.
+//
+// It also carries the visit's campaign to where the money is made, at the
+// moment a link is tapped (never by rewriting links on load, which would
+// break the click names below):
+//  - App Store links get Apple's campaign tokens (pt + ct), so App Store
+//    Connect → Analytics → Acquisition → Campaigns shows product page views,
+//    downloads, sales and proceeds per campaign. Nothing about the visitor is
+//    in them: ct is the campaign's name, e.g. "facebook_fall-coaches_ad-3".
+//  - Stripe Payment Links get client_reference_id with the same tags, which
+//    the stripe-webhook function saves on the team plan.
+//  - Links to other pages of this site get the landing page's utm_ tags, so
+//    a visitor who lands on the homepage and buys on teams.html still counts
+//    for the ad that brought them. Nothing is stored on the device for this.
 (function () {
   var URL_ = 'https://iuskxozkymrifvbpnazh.supabase.co/rest/v1/rpc/track_site_event' +
     '?apikey=sb_publishable_AJnftw7P7gLBGG9rgD44pA_AhOlF1to';
   var IDLE_MS = 30000;
+  // Apple's provider token for this developer account, from App Store Connect
+  // → Apps → Analytics → Acquisition → Campaigns → "Campaign Link Generator"
+  // (the pt= value in a generated link). Without it Apple ignores ct and the
+  // Campaigns report stays empty; with it, every App Store tap is attributed.
+  var APP_STORE_PROVIDER_TOKEN = '';
 
   var query = new URLSearchParams(window.location.search);
   try {
@@ -56,6 +74,59 @@
   var adClick = query.get('fbclid') ? 'meta'
     : (query.get('gclid') || query.get('gbraid') || query.get('wbraid')) ? 'google'
     : query.get('ttclid') ? 'tiktok' : '';
+
+  // The visit's campaign, worked out the way site_analytics_report names a
+  // source: the utm_ tags, else the ad click id, else the referring site.
+  function referrerSource(host) {
+    if (!host) return '';
+    if (/(^|\.)facebook\.com$|^fb\.me$/.test(host)) return 'facebook';
+    if (/(^|\.)instagram\.com$/.test(host)) return 'instagram';
+    if (/(^|\.)(t\.co|twitter\.com|x\.com)$/.test(host)) return 'x';
+    if (/(^|\.)google\./.test(host)) return 'google';
+    if (/(^|\.)tiktok\.com$/.test(host)) return 'tiktok';
+    if (/(^|\.)youtube\.com$/.test(host)) return 'youtube';
+    return host.replace(/^www\./, '');
+  }
+  var tags = {
+    utm_source: query.get('utm_source') || (adClick === 'meta' ? 'facebook' : adClick) || referrerSource(referrer),
+    utm_medium: query.get('utm_medium') || (adClick ? 'paid' : referrer ? 'referral' : ''),
+    utm_campaign: query.get('utm_campaign') || '',
+    utm_content: query.get('utm_content') || '',
+    utm_term: query.get('utm_term') || ''
+  };
+  function slug(value, max) {
+    return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, max);
+  }
+  // Apple's ct allows 40 characters: source, campaign and ad, shortened to fit.
+  var campaignToken = [slug(tags.utm_source, 14) || 'direct', slug(tags.utm_campaign, 14), slug(tags.utm_content, 10)]
+    .filter(Boolean).join('_').slice(0, 40);
+  // Stripe's client_reference_id: letters, digits, - and _, up to 200.
+  var checkoutReference = ['web', slug(tags.utm_source, 40) || 'direct', slug(tags.utm_medium, 30) || 'none',
+    slug(tags.utm_campaign, 60) || 'none', slug(tags.utm_content, 60) || 'none'].join('__').slice(0, 200);
+
+  function withParams(href, params) {
+    try {
+      var u = new URL(href, window.location.href);
+      Object.keys(params).forEach(function (k) {
+        if (params[k] && !u.searchParams.has(k)) u.searchParams.set(k, params[k]);
+      });
+      return u.toString();
+    } catch (e) {
+      return href;
+    }
+  }
+  function decorate(a, kind) {
+    var href = a.getAttribute('href') || '';
+    if (kind === 'app_store') {
+      a.setAttribute('href', withParams(href, { pt: APP_STORE_PROVIDER_TOKEN, ct: campaignToken, mt: '8' }));
+    } else if (kind === 'team_checkout') {
+      a.setAttribute('href', withParams(href, { client_reference_id: checkoutReference }));
+    } else if (kind === 'teams' || kind === 'support' || kind === 'home' || /^[\w./-]+\.html(\?|#|$)/.test(href)) {
+      // Only this site's own pages, and only when the visit carried a tag.
+      if (/^https?:|^\/\//.test(href) && href.indexOf(window.location.host) === -1) return;
+      if (tags.utm_source) a.setAttribute('href', withParams(href, tags));
+    }
+  }
   send({
     k: 'view',
     p: path,
@@ -181,6 +252,7 @@
     if (!a) return;
     var kind = linkKind(a);
     if (!kind) return;
+    decorate(a, kind);
     send({ k: 'click', p: path, tg: (kind + '@' + areaOf(a)).replace(/[^A-Za-z0-9_.:@\/-]/g, '').slice(0, 60) });
     if (kind !== 'jump') leave();
   }, true);
