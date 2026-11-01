@@ -127,11 +127,11 @@
           }
           button.disabled = false;
           if (result === 'invalid') say('That email doesn\'t look right. Check it and try again.', true);
-          else say('Too many messages from here today. Email support@gamutapp.com instead.', true);
+          else say('Too many messages from here today. Email gamut.physicaltherapy@gmail.com instead.', true);
         })
         .catch(function () {
           button.disabled = false;
-          say('Couldn\'t send that. Check your connection, or email support@gamutapp.com.', true);
+          say('Couldn\'t send that. Check your connection, or email gamut.physicaltherapy@gmail.com.', true);
         });
     });
   });

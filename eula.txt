@@ -204,7 +204,7 @@ This section applies because you obtained the app from Apple's App Store, and it
 
 - Third-party beneficiary. Apple and Apple's subsidiaries are third-party beneficiaries of these Terms, and upon your acceptance of them will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary of them.
 
-- Contact. Any questions, complaints or claims about the app should be directed to us at support@gamutapp.com.
+- Contact. Any questions, complaints or claims about the app should be directed to us at gamut.physicaltherapy@gmail.com.
 
 15. Changes to these Terms
 
@@ -212,4 +212,4 @@ We may update these Terms. The date at the top will change, and material changes
 
 16. Contact
 
-support@gamutapp.com
+gamut.physicaltherapy@gmail.com
