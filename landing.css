@@ -472,7 +472,7 @@ footer.site a:hover { color: var(--text); }
 .seal::before { content: ""; position: absolute; inset: 14px; rotate: 45deg; border-radius: 22px 6px 22px 6px; box-shadow: inset 0 0 0 2px var(--sage-bright), inset 0 0 0 7px transparent, inset 0 0 0 8px rgba(201, 214, 189, 0.35); }
 .seal div { position: relative; }
 .seal b { display: block; font-size: 42px; font-weight: 700; letter-spacing: -0.03em; }
-.seal span { display: block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; line-height: 1.25; color: var(--sage-bright); }
+.seal span { display: block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 3px; line-height: 1.25; color: var(--sage-bright); }
 .guarantee h3 { font-size: clamp(24px, 2.8vw, 32px); line-height: 1.12; margin: 0 0 10px; font-weight: 700; }
 .guarantee p { margin: 0; color: var(--muted); font-size: 17px; max-width: 46em; }
 .guarantee p + p { margin-top: 8px; font-size: 14.5px; }
@@ -548,7 +548,8 @@ footer.site a:hover { color: var(--text); }
   /* Full-bleed, so the tilted phone's corner is cut by the screen edge. */
   .hero-visual {
     height: 350px; width: 100vw; margin: 0 0 20px calc(50% - 50vw); overflow: hidden;
-    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent);
+    /* A long fade, so the phones dissolve into the page instead of reading as cut off. */
+    -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 96%); mask-image: linear-gradient(180deg, #000 50%, transparent 96%);
   }
   .hero-visual .tilt { --rx: 0; --ry: 0; }
   .hero-visual .phone { padding: 6px; border-radius: 34px; }
@@ -673,6 +674,8 @@ footer.site a:hover { color: var(--text); }
   .guarantee { grid-template-columns: 1fr; gap: 12px; padding: 26px 22px; }
   .seal { width: 104px; height: 104px; margin-left: -6px; }
   .seal b { font-size: 34px; }
+  /* At 104px the diamond is too narrow for the desktop caption: "GUARANTEE" ran past its edges. */
+  .seal span { font-size: 7.5px; letter-spacing: 0.03em; }
   .roster { padding: 22px 16px 18px; }
   .prow { grid-template-columns: 38px minmax(0, 1fr) auto; gap: 10px; padding: 10px 12px 10px 14px; }
   .prow .av { width: 38px; height: 38px; }
