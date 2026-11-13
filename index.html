@@ -44,8 +44,8 @@
     aria-labelledby) and by .topbar / .dock / footer. Keep those hooks.
   - The question form writes to public.site_leads through submit_site_lead
     (migration 20261026120000); its key is the app's publishable key.
-  Screens in img/d-*.webp are the dark App Store captures
-  (studio/app-store/screenshots/dark), scaled to 660px wide.
+  Screens in img/d-*.webp are real-device frames from the owner's iPhone
+  recordings (studio/screenshot-harness/device-frames.mjs writes them), 660px wide.
 -->
 </head>
 <body>
@@ -96,7 +96,7 @@
         <div class="phone back float slow"><img src="img/d-workout.webp" alt="" width="660" height="1434"></div>
         <div class="phone front float"><img src="img/d-home.webp" alt="" width="660" height="1434" fetchpriority="high"></div>
         <div class="tag-float tag-1 float slow"><i></i>Week 3 of 6</div>
-        <div class="tag-float tag-2 float"><i style="--c:var(--ember)"></i>Bench Press · 4 × 8</div>
+        <div class="tag-float tag-2 float"><i style="--c:var(--ember)"></i>Hip Thrust · 3 × 12</div>
       </div>
     </div>
     <div class="hero-body stagger">
@@ -234,7 +234,7 @@
           <p>Connect Apple Health, and the day gets lighter when your sleep and heart rate say you need it.</p>
         </article>
         <article class="step">
-          <div class="step-shot" aria-hidden="true"><div class="phone"><img src="img/d-leaderboard.webp" alt="" width="660" height="1434" loading="lazy"></div></div>
+          <div class="step-shot" aria-hidden="true"><div class="phone"><img src="img/d-streak.webp" alt="" width="660" height="1434" loading="lazy"></div></div>
           <p class="n">04 · Your people</p>
           <h3>Your streak, your friends.</h3>
           <p>Keep a streak going and earn badges. Add your friends, send a High Five, and see who trained the most this week.</p>
@@ -244,10 +244,10 @@
         <div class="rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div class="tilt" style="--ry:-9;--rx:3">
           <div class="phone"><div class="screens">
-            <img src="img/d-workout.webp" alt="A Bench Press in Gamut: warm-up sets, then working sets with the weight filled in." width="660" height="1434" loading="lazy">
+            <img src="img/d-workout.webp" alt="A Barbell Hip Thrust in Gamut: a warm-up ramp, then working sets with the weight filled in." width="660" height="1434" loading="lazy">
             <img src="img/d-season.webp" alt="Gamut's Home page: a sport's season laid over the year, with projected lift numbers." width="660" height="1434" loading="lazy">
             <img src="img/d-recovery.webp" alt="Gamut's Recovery page: strain, recovery and sleep rings with coaching." width="660" height="1434" loading="lazy">
-            <img src="img/d-leaderboard.webp" alt="Gamut's leaderboard: friends ranked by training this week." width="660" height="1434" loading="lazy">
+            <img src="img/d-streak.webp" alt="A 66-day streak in Gamut, celebrated as a new personal best." width="660" height="1434" loading="lazy">
           </div></div>
         </div>
       </div>
