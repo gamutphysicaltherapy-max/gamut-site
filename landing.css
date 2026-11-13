@@ -207,7 +207,7 @@ h2 em, h1 em { font-style: normal; color: var(--sage-bright); }
 .stage.gl .phone::after { display: none; }
 .stage.gl .phone > :first-child { transform-origin: 0 0; overflow: hidden; will-change: transform; backface-visibility: hidden; }
 .stage.gl .tag-float { animation: none; z-index: 60; transition: opacity 200ms ease; }
-.stage .gl-phone { position: absolute; left: -90px; top: -90px; z-index: 50; pointer-events: none; display: none; }
+.stage .gl-phone { position: absolute; left: -90px; top: -90px; z-index: 50; pointer-events: none; display: none; transform: translateZ(0); }
 .stage.gl .gl-phone { display: block; }
 .stage.gl-measure .tilt, .stage.gl-measure .phone, .stage.gl-measure .phone > *, .stage.gl-measure .tag-float { transform: none !important; animation: none !important; translate: none !important; }
 .tilt { transform-style: preserve-3d; transform: rotateX(calc(var(--rx, 0) * 1deg)) rotateY(calc(var(--ry, 0) * 1deg)); transition: transform 500ms var(--ease); will-change: transform; }
@@ -563,6 +563,11 @@ footer.site a:hover { color: var(--text); }
     /* A long fade, so the phones dissolve into the page instead of reading as cut off. */
     -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 96%); mask-image: linear-gradient(180deg, #000 50%, transparent 96%);
   }
+  /* With the 3D phones the same fade is drawn by phone3d.js from these two
+     numbers: Safari on iPhone freezes a WebGL canvas that sits under a mask. */
+  .hero-visual { --fade-from: 50; --fade-to: 96; }
+  .hero-visual.gl { -webkit-mask-image: none; mask-image: none; }
+  .hero-visual.gl .tilt { -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 96%); mask-image: linear-gradient(180deg, #000 50%, transparent 96%); }
   .hero-visual .tilt { --rx: 0; --ry: 0; }
   .hero-visual .phone { padding: 6px; border-radius: 34px; }
   .hero-visual .phone img, .hero-visual .phone::after { border-radius: 29px; }

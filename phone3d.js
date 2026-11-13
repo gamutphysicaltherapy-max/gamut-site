@@ -96,7 +96,7 @@
     '#extension GL_OES_standard_derivatives : enable',
     'precision highp float;',
     'varying vec3 vW, vN, vL, vP;',
-    'uniform int uMat; uniform vec3 uCam; uniform vec4 uScreen; uniform vec3 uTint; uniform sampler2D uEmblem; uniform float uHasEmblem;',
+    'uniform int uMat; uniform vec3 uCam; uniform vec4 uScreen; uniform vec3 uTint; uniform sampler2D uEmblem; uniform float uHasEmblem; uniform vec3 uFade;',
     // A photo studio, written as maths: soft boxes of light on a dark room.
     'float box(vec3 d, vec3 c, vec3 up, vec2 half_, float s){',
     '  float f = dot(d, c); vec3 t = normalize(cross(up, c)); vec3 b = cross(c, t);',
@@ -114,6 +114,7 @@
     '  return c; }',
     'float rr(vec2 p, vec2 b, float r){ vec2 q = abs(p) - b + r; return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r; }',
     'vec3 tone(vec3 c){ c = (c * (2.51 * c + 0.03)) / (c * (2.43 * c + 0.59) + 0.14); return pow(clamp(c, 0.0, 1.0), vec3(1.0 / 2.2)); }',
+    'float fadeAt(){ return uFade.z < 0.5 ? 1.0 : clamp((gl_FragCoord.y - uFade.y) / (uFade.x - uFade.y), 0.0, 1.0); }',
     'void main(){',
     '  vec3 N = normalize(vN); vec3 V = normalize(uCam - vW); if (dot(N, V) < 0.0) N = -N;',
     '  vec3 R = reflect(-V, N); float nv = clamp(dot(N, V), 0.0, 1.0); float fr = pow(1.0 - nv, 5.0);',
@@ -134,7 +135,7 @@
     '    float ga = clamp(dot(glare, vec3(0.45)), 0.0, 0.35);',
     '    vec4 o = mix(vec4(bez, 1.0), vec4(glare, ga), win);',
     '    o = mix(o, vec4(tone(island), 1.0), isl * win);',
-    '    gl_FragColor = o; return;',
+    '    gl_FragColor = o * fadeAt(); return;',
     '  } else if (uMat == 2 || uMat == 3) {', // back glass (2), camera plateau (3)
     '    float rough = uMat == 2 ? 0.55 : 0.3;',
     '    vec3 base = uTint * (uMat == 2 ? 1.0 : 1.25);',
@@ -150,7 +151,7 @@
     '    glass *= 0.55 + 0.45 * smoothstep(0.018, 0.03, rad);',
     '    col = glass;',
     '  }',
-    '  gl_FragColor = vec4(tone(col), a);',
+    '  gl_FragColor = vec4(tone(col), a) * fadeAt();',
     '}'
   ].join('\n');
 
@@ -190,7 +191,7 @@
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
     gl.useProgram(prog);
     var U = {};
-    ['uProj', 'uModel', 'uPart', 'uMat', 'uCam', 'uScreen', 'uTint', 'uEmblem', 'uHasEmblem'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+    ['uFade', 'uProj', 'uModel', 'uPart', 'uMat', 'uCam', 'uScreen', 'uTint', 'uEmblem', 'uHasEmblem'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
     var bufs = {};
     Object.keys(MESH).forEach(function (k) {
       var vb = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, vb); gl.bufferData(gl.ARRAY_BUFFER, MESH[k].v, gl.STATIC_DRAW);
@@ -218,9 +219,13 @@
     var tags = Array.prototype.slice.call(el.querySelectorAll('.tag-float')).map(function (t, n) {
       return { el: t, z: +(t.getAttribute('data-z') || 100), bob: t.classList.contains('slow') ? 9.5 : 7, phase: 1 + n * 1.7 };
     });
+    // Tags sit above the canvas, so they leave .tilt (which may be masked, and
+    // so stacks as one layer under it). Same positioned box, so nothing moves.
+    if (tilt && tilt.offsetWidth === el.offsetWidth) tags.forEach(function (g) { el.appendChild(g.el); });
     el.appendChild(canvas);
 
     var W = 0, H = 0, dpr = 1, pivot = [0, 0], rest = { rx: 0, ry: 0 }, proj;
+    var fade = null, dead = false;
     var dirty = true, visible = true, hovering = false, dragging = false;
     var cur = { rx: 0, ry: 0 }, vel = { rx: 0, ry: 0 }, hover = { rx: 0, ry: 0 }, spin = { rx: 0, ry: 0 }, last = null;
 
@@ -231,6 +236,13 @@
       var cs = tilt ? getComputedStyle(tilt) : null;
       rest.rx = cs ? parseFloat(cs.getPropertyValue('--rx')) || 0 : 0;
       rest.ry = cs ? parseFloat(cs.getPropertyValue('--ry')) || 0 : 0;
+      // A stage may fade out toward its bottom edge (--fade-from / --fade-to, in
+      // percent of its height). Safari stops repainting a WebGL canvas that sits
+      // under a CSS mask, so the fade is drawn here instead: in the shader for
+      // the phone and as opacity on each tag. The screens fade as one group,
+      // through a mask on .tilt (landing.css), which holds no canvas.
+      var es = getComputedStyle(el), f0 = parseFloat(es.getPropertyValue('--fade-from')), f1 = parseFloat(es.getPropertyValue('--fade-to'));
+      fade = f1 > f0 ? [f0 / 100 * H, f1 / 100 * H] : null;
       var tr = tilt ? tilt.getBoundingClientRect() : sr;
       pivot = [tr.left + tr.width / 2 - sr.left - W / 2, -(tr.top + tr.height / 2 - sr.top - H / 2)];
       phones.forEach(function (p) {
@@ -278,6 +290,8 @@
       gl.uniform3f(U.uCam, 0, 0, CAM);
       gl.uniform4f(U.uScreen, P.sw / 2, P.sh / 2, P.sr, 0);
       gl.uniform1f(U.uHasEmblem, hasEmblem ? 1 : 0);
+      var sy = canvas.height / (H + 2 * BLEED);
+      if (fade) gl.uniform3f(U.uFade, (H + BLEED - fade[0]) * sy, (H + BLEED - fade[1]) * sy, 1); else gl.uniform3f(U.uFade, 0, 0, 0);
       gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tex); gl.uniform1i(U.uEmblem, 0);
       phones.forEach(function (p) {
         var bob = p.bob && !reduce ? Math.sin(t * 2 * Math.PI / p.bob + p.phase) * 6 : 0;
@@ -305,13 +319,14 @@
         var s = toPage(apply(rig, g.x, g.y + bob, g.z)), home = [W / 2 + g.x, H / 2 - g.y];
         var back = Math.cos(cur.ry * RAD) < 0.2;
         g.el.style.transform = 'translate(' + (s[0] - home[0]).toFixed(2) + 'px,' + (s[1] - home[1]).toFixed(2) + 'px)';
-        g.el.style.opacity = back ? 0 : '';
+        var fo = fade ? Math.max(0, Math.min(1, (fade[1] - s[1]) / (fade[1] - fade[0]))) : 1;
+        g.el.style.opacity = back ? 0 : fo < 1 ? fo.toFixed(2) : '';
       });
     }
 
     function frame(now) {
       raf = 0;
-      if (!visible) return;
+      if (!visible || dead) return;
       var dt = last == null ? 0.016 : Math.min(0.05, (now - last) / 1000); last = now;
       var t = now / 1000, sway = reduce ? 0 : (fine ? 1.6 : 4.5);
       var goalX = rest.rx + (hovering && !dragging ? hover.rx - rest.rx : 0) + spin.rx + Math.sin(t * 0.43) * sway * 0.4;
@@ -326,10 +341,11 @@
       if (!still) raf = requestAnimationFrame(frame); else last = null;
     }
     var raf = 0;
-    function wake() { if (!raf && visible) raf = requestAnimationFrame(frame); }
+    function wake() { if (!raf && visible && !dead) raf = requestAnimationFrame(frame); }
 
     // Pointer: lean on hover, spin on drag.
     el.addEventListener('pointermove', function (e) {
+      if (dead) return;
       if (dragging) {
         spin.ry += (e.clientX - dragging.x) * 0.45; spin.rx = Math.max(-40, Math.min(40, spin.rx - (e.clientY - dragging.y) * 0.3));
         dragging.x = e.clientX; dragging.y = e.clientY; wake(); return;
@@ -341,7 +357,7 @@
     });
     el.addEventListener('pointerleave', function () { hovering = false; wake(); });
     el.addEventListener('pointerdown', function (e) {
-      if (e.button || e.target.closest('a,button,input,video,[data-live]')) return;
+      if (dead || e.button || e.target.closest('a,button,input,video,[data-live]')) return;
       dragging = { x: e.clientX, y: e.clientY, id: e.pointerId };
       try { el.setPointerCapture(e.pointerId); } catch (err) { /* older browsers */ }
       el.classList.add('grabbing'); wake();
@@ -362,11 +378,17 @@
     }
     document.addEventListener('visibilitychange', function () { if (!document.hidden) { last = null; wake(); } });
     var resizeTimer;
-    function remeasure() { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { measure(); wake(); }, 80); }
+    function remeasure() { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { if (dead) return; measure(); wake(); }, 80); }
     window.addEventListener('resize', remeasure);
     window.addEventListener('load', remeasure);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
-    canvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); el.classList.remove('gl'); phones.forEach(function (p) { p.screen.style.transform = ''; p.screen.style.visibility = ''; p.screen.style.borderRadius = ''; p.el.style.zIndex = ''; }); visible = false; });
+    // If the browser takes the context away, hand the stage back to the flat
+    // CSS phones completely: no half state where screens move and frames don't.
+    canvas.addEventListener('webglcontextlost', function (e) {
+      e.preventDefault(); dead = true; el.classList.remove('gl', 'grabbing');
+      phones.forEach(function (p) { var s = p.screen.style; s.transform = s.visibility = s.borderRadius = ''; p.el.style.zIndex = ''; });
+      tags.forEach(function (g) { g.el.style.transform = g.el.style.opacity = ''; });
+    });
 
     measure();
     cur.rx = rest.rx; cur.ry = rest.ry;
