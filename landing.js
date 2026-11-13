@@ -20,12 +20,14 @@
   }
 
   // Phones lean toward the pointer. Resting pose comes from the stylesheet.
+  // This is the flat fallback: where WebGL works, phone3d.js draws real 3D
+  // phones on every .stage and takes the pointer over (the stage gets .gl).
   if (hover && !reduce) {
     $$('.stage').forEach(function (stage) {
       var tilt = $('.tilt', stage);
       if (!tilt) return;
       stage.addEventListener('pointermove', function (e) {
-        if (window.innerWidth <= 980) return;
+        if (window.innerWidth <= 980 || stage.classList.contains('gl')) return; // phone3d.js has the phones
         var r = stage.getBoundingClientRect();
         var x = (e.clientX - r.left) / r.width - 0.5;
         var y = (e.clientY - r.top) / r.height - 0.5;

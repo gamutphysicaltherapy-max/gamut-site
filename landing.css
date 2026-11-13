@@ -198,6 +198,18 @@ h2 em, h1 em { font-style: normal; color: var(--sage-bright); }
   background: linear-gradient(115deg, rgba(255, 255, 255, 0.1), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.04));
 }
 .stage { perspective: 1500px; }
+/* phone3d.js draws a real 3D phone over each stage and adds .gl. The flat
+   frame steps aside; the screen element stays, fitted under the glass. */
+.stage.gl { perspective: none; touch-action: pan-y; cursor: grab; -webkit-user-select: none; user-select: none; }
+.stage.gl.grabbing { cursor: grabbing; }
+.stage.gl .tilt { transform: none; transform-style: flat; will-change: auto; transition: none; }
+.stage.gl .phone { transform: none; animation: none; background: none; box-shadow: none; opacity: 1; }
+.stage.gl .phone::after { display: none; }
+.stage.gl .phone > :first-child { transform-origin: 0 0; overflow: hidden; will-change: transform; backface-visibility: hidden; }
+.stage.gl .tag-float { animation: none; z-index: 60; transition: opacity 200ms ease; }
+.stage .gl-phone { position: absolute; left: -90px; top: -90px; z-index: 50; pointer-events: none; display: none; }
+.stage.gl .gl-phone { display: block; }
+.stage.gl-measure .tilt, .stage.gl-measure .phone, .stage.gl-measure .phone > *, .stage.gl-measure .tag-float { transform: none !important; animation: none !important; translate: none !important; }
 .tilt { transform-style: preserve-3d; transform: rotateX(calc(var(--rx, 0) * 1deg)) rotateY(calc(var(--ry, 0) * 1deg)); transition: transform 500ms var(--ease); will-change: transform; }
 .tilt.live { transition-duration: 120ms; }
 .tag-float {
@@ -697,3 +709,4 @@ footer.site a:hover { color: var(--text); }
   .js .show .step:not(.on) { opacity: 1; }
   .ambient .mote { display: none; }
 }
+.feature-media { position: relative; }
